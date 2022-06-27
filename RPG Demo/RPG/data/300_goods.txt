@@ -1,0 +1,16 @@
+goodsID	Name	Atk	heal	npcID	Amount	Price	tag	Def	Detail	
+14
+300	扳手	50	0	400	50	500	arms	10	none
+301	铁锤	100	0	400	50	1000	arms	10	none
+302	螺丝刀	30	0	400	50	30	arms	10	none
+303	蜜饼	0	200	401	0	180000	edible	0	不要希望在小刻这里买到
+304	蛋糕	0	50	401	50	1000	edible	0	none
+305	曲奇饼 	0	30	401	50	500	edible	0	none
+306	龙门币	0	0	403	50	3600000	currency	0	none
+307	源石	0	0	403	50	7200000	currency	0	none
+308	牡丹	0	0	404	50	60	decorate	0	none
+309	薰衣草	0	0	404	50	60	decorate	0	none
+310	赤霄	1456	0	400	50	150	arms	10	据说这是**的
+311	烤肉	285	100	402	50	100	edible	0	小火龙特制
+312	很热的刀	300	0	400	1	0	arms	30	小刻的专属
+313	火神的盾	100	0	400	1	5000	arms	5000

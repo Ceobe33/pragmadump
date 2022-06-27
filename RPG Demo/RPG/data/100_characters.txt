@@ -1,0 +1,6 @@
+ID	Name	Role		Atk	Def	Hp	Growth	Img	Acount
+4
+100	Ceobe	Caster		757	128	1856	S	CC	180000
+101	Vulcan	Defender		870	585	3086	B	VV	180000
+102	Thorns	Guard		726	464	2650	A	GG	3600000
+103	pp	None		100	100	300	S	PP	10

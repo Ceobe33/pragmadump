@@ -1,0 +1,3 @@
+ID	name	row	col	img	gain
+1
+600	诗怀雅	0	0	诗	600
