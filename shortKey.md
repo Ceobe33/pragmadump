@@ -31,6 +31,12 @@ cd dicName/name
 ## about file
 rm -rf xxx.swp	// remove the file which is insert name
 		// mausally that file is because ctrl+zz 
+
+`ctrl d`	// reduce line 缩进
+`>`		// redo last step
+`ctrl r`	// reundo
+`u`		// undo
+
 ### deleting
 - Use `dw` to detele word, the cursor position is important.
 If the cusor is in the middle of word, there will delete the cursor to word end.
