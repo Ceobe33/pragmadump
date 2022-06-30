@@ -1,4 +1,6 @@
-#pragma once
+#ifndef RPG_RPG_SCENEBASE_H_
+#define RPG_RPG_SCENEBASE_H_
+
 #include "Node.h"
 
 //³¡¾°»ùÀà
@@ -17,3 +19,4 @@ protected:
 	string m_strName;
 };
 
+#endif // !RPG_RPG_SCENEBASE_H_

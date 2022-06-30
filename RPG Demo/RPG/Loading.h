@@ -1,4 +1,6 @@
-#pragma once
+#ifndef RPG_RPG_LOADING_H_
+#define RPG_RPG_LOADING_H_
+
 class cLoading :public cSceneBase
 {
 public:
@@ -15,3 +17,4 @@ private:
 	int nextMapId;
 };
 
+#endif // !RPG_RPG_LOADING_H_

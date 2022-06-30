@@ -3,9 +3,8 @@
 // 特定于项目的包含文件
 //
 
-
-
-#pragma once
+#ifndef RPG_RPG_STDAFX_H_
+#define RPG_RPG_STDAFX_H_
 
 #include "targetver.h"
 #include <stdio.h>
@@ -71,3 +70,5 @@ enum
 //extern cDataRuler* dataRuler;
 //extern cRuler* ruler;
 // TODO:  在此处引用程序需要的其他头文件
+
+#endif // !RPG_RPG_STDAFX_H_

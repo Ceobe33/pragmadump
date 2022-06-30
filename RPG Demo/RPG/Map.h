@@ -1,4 +1,6 @@
-#pragma once
+#ifndef RPG_RPG_MAP_H_
+#define RPG_RPG_MAP_H_
+
 class cMap
 {
 public:
@@ -32,3 +34,5 @@ private:
 //	CC_GETPRIVATE(vector<cMap*>, VecMap, m_vecMap);
 //private:
 //};
+
+#endif // !RPG_RPG_MAP_H_
