@@ -2,23 +2,18 @@
 #include "Fire.h"
 
 
-cFire::cFire()
-{
+cFire::cFire() {
 	m_iTag = eNone;
 	m_iDirection = eNone;
 	m_iDistance = 0;
 }
 
 
-cFire::~cFire()
-{
+cFire::~cFire() {
 }
 
-void cFire::update()
-{
-	
-	switch (m_iDirection)
-	{
+void cFire::update() {
+	switch (m_iDirection) {
 	case eUp:
  		m_iRow--;
 		break;
@@ -40,47 +35,40 @@ void cFire::update()
 	//}
 }
 
-void cFire::render()
-{
-	switch (m_iTag)
-	{
+void cFire::render() {
+	switch (m_iTag)	{
 	case ePlayer:
 		cout << "µ¶";
 		break;
 	case eEnemy:
-
+		cout << "  ";
+	default:
+		cout << "  ";
 		break;
 	}
 }
 
-void cFire::setPosition(const int &r, const int &c, const int &direction, const int &tag)
-{
+void cFire::setPosition(const int &r, const int &c, const int &direction, const int &tag) {
 	m_iRow = r, m_iCol = c, m_iDirection = direction, m_iTag = tag;
 	m_iBackupRow = r, m_iBackupCol = c;
 }
 
 
-cFireRuler::cFireRuler()
-{
+cFireRuler::cFireRuler() {
 	m_pFire = new cFire();
 }
 
-cFireRuler::~cFireRuler()
-{
+cFireRuler::~cFireRuler() {
 }
 
-void cFireRuler::load(const int & i, const int &j, const int &dir,const int &tag)
-{
+void cFireRuler::load(const int & i, const int &j, const int &dir,const int &tag) {
 	m_pFire->setPosition(i, j,dir,tag);
 	m_vecFire.push_back(m_pFire);
 }
 
-void cFireRuler::update()
-{
-	for (int i = 0; i < m_vecFire.size(); i++)
-	{
-		if (m_pFire->getDistance())
-		{
+void cFireRuler::update() {
+	for (int i = 0; i < m_vecFire.size(); i++) {
+		if (m_pFire->getDistance()) {
 			m_vecFire.erase(m_vecFire.begin() + i);
 		}
 	}

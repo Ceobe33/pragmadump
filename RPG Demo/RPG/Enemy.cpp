@@ -49,8 +49,6 @@ void cEnemy::initialize(cEnemyData* enemy)
 		m_strImg = enemy->strImg;
 }
 
-
-
 cEnemyRuler::cEnemyRuler()
 {
 	//m_pEnemy = new cEnemy();
@@ -60,6 +58,7 @@ cEnemyRuler::cEnemyRuler()
 cEnemyRuler::~cEnemyRuler()
 {
 }
+
 void cEnemyRuler::render(cEnemy* enemy)
 {
 	//m_pEnemy->render(enemy);
@@ -81,11 +80,8 @@ void cEnemyRuler::render(cEnemy* enemy)
 			if (enemy->getHp() < 0)
 				enemy->setHp(0);
 		}
-
 	}
-
 }
-
 
 cEnemy* cEnemyRuler::render(const int& r, const int& c, const int& i)
 {
@@ -98,6 +94,7 @@ cEnemy* cEnemyRuler::render(const int& r, const int& c, const int& i)
 	}
 	return nullptr;
 }
+
 cEnemy* cEnemyRuler::getSingleEnemy(const int& enemyID)
 {
 	//GET_pSCENEMAIN;
@@ -111,6 +108,7 @@ cEnemy* cEnemyRuler::getSingleEnemy(const int& enemyID)
 	}
 	return nullptr;
 }
+
 void cEnemyRuler::storage()
 {
 	//获取map容器里的vector<cDataBase*>
@@ -125,8 +123,6 @@ void cEnemyRuler::storage()
 	}
 
 }
-
-
 
 cEnemy* cEnemyRuler::killed()
 {

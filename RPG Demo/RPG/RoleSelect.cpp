@@ -98,7 +98,7 @@ void cRoleSelectRuler::render()
 		}
 		else
 		{
-			cout << "  ";
+			cout << "   ";
 		}
 		m_pRoleSelect->render(m_vecPlayer[i]);
 	}

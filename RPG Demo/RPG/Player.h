@@ -1,21 +1,24 @@
-#pragma once
+#ifndef RPG_RPG_PLAYER_H_
+#define RPG_RPG_PLAYER_H_
+
 #include "Bag.h"
 #include "Equipment.h"
 //#include "SceneMain.h"
+
 class cPlayer
 {
 public:
 	cPlayer();
-	//功能
-	//cPlayer(int r, int c);
+	// 功能
+	// cPlayer(int r, int c);
 	void update();
 	void backup();
 	void revoke();
 	void bonus(string inOrOut,cGoodsData* pData);
 	void surroundPlayer(const int &i);
 	void setPosition(int r, int c);
-	//cPlayer* getDetail();
-	//static cPlayer* getInstance();
+	// cPlayer* getDetail();
+	// static cPlayer* getInstance();
 	void buyGoods(void* name);
 	void initialize(cRoleSelectData* detail);
 	void useItem(cGoodsData* data);
@@ -25,7 +28,7 @@ public:
 	void experienceRender();
 	void propertyRender();
 	void petInit(cPetData* pData);
-	//接口
+	// 接口 interface
 	bool scan(int r,int c);
 	CC_GET_PRIVATE(int, Row, m_iRow);
 	CC_GET_PRIVATE(int, Col, m_iCol);
@@ -61,9 +64,13 @@ private:
 	//int m_iRow, m_iCol;
 	//cPlayer* m_pInstancePlayer;
 	//bool m_bHurt,m_bFire;
-	int m_iID,m_iState,m_iHPMax;
 	//int m_iEXPMax, m_iEXP;
 	//int m_iBackupRow, m_iBackupCol;
 	//cBag* m_pBag;
+
+	int m_iID,m_iState,m_iHPMax;
+	// player move cache, to prevent system to fluquent and player move too fast
+	int m_iMoveCache;
 };
 
+#endif // !RPG_RPG_PLAYER_H_

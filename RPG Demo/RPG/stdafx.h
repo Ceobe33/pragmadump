@@ -11,21 +11,27 @@
 #include <tchar.h>
 #include <Windows.h>
 #include <iostream>
-#include <fstream> //读取数据文件头文件
+// 读取数据文件头文件
+#include <fstream>
 #include <string>
-#include <iomanip> //setw（）函数，定义输出宽度函数
+// setw（）函数，定义输出宽度函数
+#include <iomanip>
 #include <time.h>
 #include <vector>
-#include <map> //map容器
-#include <cmath>//c++中 abs() 取绝对值函数的头文件
-#include <functional> //消息机制的头文件
+// map容器
+#include <map>
+// c++中 abs() 取绝对值函数的头文件
+#include <cmath>
+// 消息机制的头文件
+#include <functional>
+
 using namespace std;
 
 #define KEY_DOWN(vk_code) (GetAsyncKeyState(vk_code)&0x8000?1:0)
 #define VK_B           0x42
 #define VK_E           0x45
-//##是粘合符
 
+// ##是粘合符
 #define CC_GET_SET_PRIVATE(dataType, functionName, valueName) \
 	dataType get##functionName(){ return valueName; }\
 	void set##functionName(dataType value){ valueName = value; } \
@@ -39,16 +45,17 @@ using namespace std;
 	dataType valueName; \
 	public:
 
-//得到游戏场景的指针
-//这两种分别在什么场景下使用，作用是什么
-//enemy 处的 bug 怎么改
+// 得到游戏场景的指针
+// 这两种分别在什么场景下使用，作用是什么
+// TODO enemy 处的 bug 怎么改
 #define GET_pCURENTSCENE cSceneMain* pCurentScene =static_cast<cSceneMain*>(cDirector::getInstance()->getScene())
 #define GET_pSCENEMAIN cSceneMain* pSceneMain =static_cast<cSceneMain*>(cDirector::getInstance()->getScene("Game"))
 
-enum
-{
+enum {
 	eAir,
 	eWall,
+	ENUM,
+	eMoveCacheVal,
 	eNPCCoach = 405,
 	eMapBattle = 203,
 
@@ -62,13 +69,13 @@ enum
 	eRight
 };
 
-//#include "Ruler.h"
+// #include "Ruler.h"
 #include "DataRuler.h"
 #include "Director.h"
 #include "SceneMain.h"
 #include "Emitter.h"
-//extern cDataRuler* dataRuler;
-//extern cRuler* ruler;
+// extern cDataRuler* dataRuler;
+// extern cRuler* ruler;
 // TODO:  在此处引用程序需要的其他头文件
 
 #endif // !RPG_RPG_STDAFX_H_

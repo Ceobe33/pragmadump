@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "NodeRoleSelect.h"
 
-
 cNodeRoleSelect::cNodeRoleSelect()
 {
 	//m_strName = "RoleSelect";
@@ -27,7 +26,8 @@ void cNodeRoleSelect::update()
 		m_iState++;
 	else if (KEY_DOWN(VK_UP))
 		m_iState--;
-	if (0 > m_iState)
+
+	if (m_iState < 0)
 		m_iState = 0;
 	else if (m_vecPlayer.size() - 1 < m_iState)
 		m_iState = m_vecPlayer.size() - 1;
@@ -41,9 +41,6 @@ void cNodeRoleSelect::update()
 	{
 		cDirector::getInstance()->popScene();
 	}
-
-	
-
 }
 
 void cNodeRoleSelect::render()
@@ -68,7 +65,5 @@ void cNodeRoleSelect::render()
 			<< role->m_iDef << "\t"
 			<< role->m_strGrowth << "\t"
 			<< role->m_strImg << endl;
-
 	}
-
 }

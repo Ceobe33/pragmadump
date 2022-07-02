@@ -4,8 +4,8 @@
 #include "SceneMain.h"
 
 //cPlayer* cPlayer::m_pInstancePlayer = nullptr;
-cPlayer::cPlayer()
-{
+cPlayer::cPlayer() 
+	:m_iMoveCache(0) {
 	m_iRow = 0, m_iCol = 0, m_iHP = 0;
 	m_iBackupTrainRow = 0, m_iBackupTrainCol = 0;
 	m_pBag = new cBag();
@@ -19,52 +19,44 @@ cPlayer::cPlayer()
 	cEmitter::getInstance()->registerNews("buyGoods", bind(&cPlayer::buyGoods, this, placeholders::_1));
 }
 
-
 //cPlayer::cPlayer(int r, int c)
 //{
 //	m_iRow = r, m_iCol = c;
 //}
 
-void cPlayer::update()
-{
+void cPlayer::update() {
 	GET_pCURENTSCENE;
 	//GET_pSCENEMAIN;
 	//备份玩家坐标
 	backup();
-	if (KEY_DOWN(VK_DOWN))
+	if (KEY_DOWN(VK_DOWN) && 0 == m_iMoveCache++ % eMoveCacheVal)
 		m_iRow++;
-	else if (KEY_DOWN(VK_UP))
+	else if (KEY_DOWN(VK_UP) && 0 == m_iMoveCache++ % eMoveCacheVal)
 		m_iRow--;
-	else if (KEY_DOWN(VK_RIGHT))
+	else if (KEY_DOWN(VK_RIGHT) && 0 == m_iMoveCache++ % eMoveCacheVal)
 		m_iCol++;
-	else if (KEY_DOWN(VK_LEFT))
+	else if (KEY_DOWN(VK_LEFT) && 0 == m_iMoveCache++ % eMoveCacheVal)
 		m_iCol--;
-	else if (KEY_DOWN(VK_RETURN))
-	{
+	else if (KEY_DOWN(VK_RETURN)) {
 		//m_bFire = true;
 
 	}
-	else if (KEY_DOWN(VK_SPACE))
-	{
+	else if (KEY_DOWN(VK_SPACE)) {
 		int direction = 0;
 		//up
-		if (1 == m_iBackupRow - m_iRow && 0 == m_iBackupCol - m_iCol)
-		{
+		if (1 == m_iBackupRow - m_iRow && 0 == m_iBackupCol - m_iCol) {
 			direction = eUp;
 		}
 		//down
-		else if (-1 == m_iBackupRow - m_iRow && 0 == m_iBackupCol - m_iCol)
-		{
+		else if (-1 == m_iBackupRow - m_iRow && 0 == m_iBackupCol - m_iCol) {
 			direction = eDown;
 		}
 		//left
-		else if (0 == m_iBackupRow - m_iRow && 1 == m_iBackupCol - m_iCol)
-		{
+		else if (0 == m_iBackupRow - m_iRow && 1 == m_iBackupCol - m_iCol) {
 			direction = eLeft;
 		}
 		//right
-		else if (0 == m_iBackupRow - m_iRow && -1 == m_iBackupCol - m_iCol)
-		{
+		else if (0 == m_iBackupRow - m_iRow && -1 == m_iBackupCol - m_iCol) {
 			direction = eRight;
 		}
 		pCurentScene->getFireRuler()->load(m_iRow, m_iCol, direction, ePlayer);
@@ -76,49 +68,38 @@ void cPlayer::update()
 	//equipmentBonus();
 }
 
-
-void cPlayer::surroundPlayer(const int& i)
-{
+void cPlayer::surroundPlayer(const int& i) {
 	GET_pSCENEMAIN;
-	if (i != pSceneMain->getCurentMap()->m_arrMap[m_iRow + 1][m_iCol])
-	{
+	if (i != pSceneMain->getCurentMap()->m_arrMap[m_iRow + 1][m_iCol]) {
 		setPosition(m_iRow + 1, m_iCol);
 	}
-	else if (i != pSceneMain->getCurentMap()->m_arrMap[m_iRow - 1][m_iCol])
-	{
+	else if (i != pSceneMain->getCurentMap()->m_arrMap[m_iRow - 1][m_iCol])	{
 		setPosition(m_iRow - 1, m_iCol);
 	}
-	else if (i != pSceneMain->getCurentMap()->m_arrMap[m_iRow][m_iCol - 1])
-	{
+	else if (i != pSceneMain->getCurentMap()->m_arrMap[m_iRow][m_iCol - 1])	{
 		setPosition(m_iRow, m_iCol - 1);
 	}
-	else if (i != pSceneMain->getCurentMap()->m_arrMap[m_iRow][m_iCol + 1])
-	{
+	else if (i != pSceneMain->getCurentMap()->m_arrMap[m_iRow][m_iCol + 1])	{
 		setPosition(m_iRow, m_iCol + 1);
 	}
 }
 
-void cPlayer::setPosition(int r, int c)
-{
+void cPlayer::setPosition(int r, int c) {
 	m_iRow = r, m_iCol = c;
 }
 
-bool cPlayer::scan(int r, int c)
-{
+bool cPlayer::scan(int r, int c) {
 	if (r == m_iRow && c == m_iCol)
 		return true;
 	return false;
 }
 
-void cPlayer::backup()
-{
+void cPlayer::backup() {
 	m_iBackupRow = m_iRow;
 	m_iBackupCol = m_iCol;
 }
 
-void cPlayer::revoke()
-{
-
+void cPlayer::revoke() {
 	m_iRow = m_iBackupRow;
 	m_iCol = m_iBackupCol;
 }
@@ -128,9 +109,7 @@ void cPlayer::revoke()
 //	return m_pInstancePlayer;
 //}
 
-void cPlayer::initialize(cRoleSelectData* detail)
-{
-
+void cPlayer::initialize(cRoleSelectData* detail) {
 	m_iID = detail->iID;
 	m_iAtk = detail->m_iAtk;
 	m_iDef = detail->m_iDef;
@@ -142,33 +121,24 @@ void cPlayer::initialize(cRoleSelectData* detail)
 	m_iAcount = detail->m_iAcount;
 }
 
-void cPlayer::useItem(cGoodsData* data)
-{
-
-
+void cPlayer::useItem(cGoodsData* data){
 }
 
 
-void cPlayer::buyGoods(void* voidData)
-{
+void cPlayer::buyGoods(void* voidData) {
 	cGoodsData* pData = static_cast<cGoodsData*>(voidData);
 	//GET_pSCENEMAIN;
-	if(pData->iID >= 600 && pData->iID < 700)
-	{
+	if(pData->iID >= 600 && pData->iID < 700) {
 		cPetData* pData = static_cast<cPetData*>(voidData);
 		petInit(pData);
 	}
-	else if (pData->iID == 312)
-	{
-		if (m_strName != "Ceobe")
-		{
+	else if (pData->iID == 312)	{
+		if (m_strName != "Ceobe") {
 			//cClert::getInstance()->buyingPower();
 			cDirector::getInstance()->pushScene(new cClert());
 		}
-		if (m_strName == "Ceobe")
-		{
-			if (m_iAcount < pData->iPrice)
-			{
+		if (m_strName == "Ceobe") {
+			if (m_iAcount < pData->iPrice) {
 				cout << "you have no money";
 				return;
 			}
@@ -177,8 +147,7 @@ void cPlayer::buyGoods(void* voidData)
 			m_pBag->addGoods(pData);
 		}
 	}
-	else
-	{
+	else {
 		if (m_iAcount < pData->iPrice)
 			return;
 		m_iAcount -= pData->iPrice;
