@@ -9,8 +9,8 @@ Here, offered some role you can select(although all the same:P) ,and then use ar
 
 (emm now.. is too late, I'll go to bed, good ni-night)
 
-
-
+And til today I had update half directory file format, and fix some little bug.
+I can feel it that is step by step turns better and better ^ ^
 
 
 ## 角色扮演小demo
@@ -21,6 +21,6 @@ Here, offered some role you can select(although all the same:P) ,and then use ar
 这个小项目的一些想法是由一款叫明日方舟的游戏提供的,虽然平时不怎么玩游戏但是我就喜欢这个, 主要是里面的小刻!!
 在这里面提供了一些职业选择(虽然功能现在还没有区分,都是一样的:P) 然后就可以使用方向键移动你的光标(箭头) 和你的角色啦!
 
-(现在已经凌晨了, 睡觉觉了, 改天再细细聊一下~~ 晚安安)
+(现在已经凌晨了, 睡觉觉了, 改天再继续改一下~~ 晚安安)
 
 (英语的话, 练习啦练习啦, 有不对的地方还请赐教,我是很喜欢别人当我老师的,碎碎念..)
