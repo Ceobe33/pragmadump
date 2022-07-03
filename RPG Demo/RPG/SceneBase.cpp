@@ -2,12 +2,9 @@
 #include "SceneBase.h"
 
 cSceneBase::cSceneBase()
-{
-	m_strName = "";//≥ı ºªØ
-}
-
-
-cSceneBase::~cSceneBase()
+	:m_strName("")
 {
 }
 
+cSceneBase::~cSceneBase() {
+}

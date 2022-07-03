@@ -4,8 +4,7 @@
 #include "SceneMain.h"
 
 //cPlayer* cPlayer::m_pInstancePlayer = nullptr;
-cPlayer::cPlayer() 
-	:m_iMoveCache(0) {
+cPlayer::cPlayer() {
 	m_iRow = 0, m_iCol = 0, m_iHP = 0;
 	m_iBackupTrainRow = 0, m_iBackupTrainCol = 0;
 	m_pBag = new cBag();
@@ -29,17 +28,16 @@ void cPlayer::update() {
 	//GET_pSCENEMAIN;
 	//备份玩家坐标
 	backup();
-	if (KEY_DOWN(VK_DOWN) && 0 == m_iMoveCache++ % eMoveCacheVal)
+	if (KEY_DOWN(VK_DOWN))
 		m_iRow++;
-	else if (KEY_DOWN(VK_UP) && 0 == m_iMoveCache++ % eMoveCacheVal)
+	else if (KEY_DOWN(VK_UP))
 		m_iRow--;
-	else if (KEY_DOWN(VK_RIGHT) && 0 == m_iMoveCache++ % eMoveCacheVal)
+	else if (KEY_DOWN(VK_RIGHT))
 		m_iCol++;
-	else if (KEY_DOWN(VK_LEFT) && 0 == m_iMoveCache++ % eMoveCacheVal)
+	else if (KEY_DOWN(VK_LEFT))
 		m_iCol--;
 	else if (KEY_DOWN(VK_RETURN)) {
 		//m_bFire = true;
-
 	}
 	else if (KEY_DOWN(VK_SPACE)) {
 		int direction = 0;
@@ -124,7 +122,6 @@ void cPlayer::initialize(cRoleSelectData* detail) {
 void cPlayer::useItem(cGoodsData* data){
 }
 
-
 void cPlayer::buyGoods(void* voidData) {
 	cGoodsData* pData = static_cast<cGoodsData*>(voidData);
 	//GET_pSCENEMAIN;
@@ -155,41 +152,31 @@ void cPlayer::buyGoods(void* voidData) {
 	}
 }
 
-void cPlayer::setBackupTrainPosition()
-{
+void cPlayer::setBackupTrainPosition() {
 	m_iBackupTrainRow = m_iRow, m_iBackupTrainCol = m_iCol;
 }
 
-void cPlayer::bonus(string inOrOut, cGoodsData* pData)
-{
+void cPlayer::bonus(string inOrOut, cGoodsData* pData) {
 	//判断是装备/使用 还是解除
-	if (inOrOut == "in")
-	{
-		if (pData->iBagCount > 0)
-		{
-			if (pData->strTag == "edible")
-			{
-				if (m_iHP < m_iHPMax)
-				{
+	if (inOrOut == "in") {
+		if (pData->iBagCount > 0) {
+			if (pData->strTag == "edible") {
+				if (m_iHP < m_iHPMax) {
 					pData->iBagCount--;//减少背包内相应物品数量
 					m_iHP += pData->iHeal;
 				}
-				else
-				{
+				else {
 					m_iHP = m_iHPMax;
 				}
 			}
-			else if (pData->strTag == "arms")
-			{
+			else if (pData->strTag == "arms") {
 				m_iDef += pData->iDef;
 				m_iAtk += pData->iAtk;
 				pData->iBagCount--;
 				pData->iEquipmentCount++;
 				//pSceneMain->getPlayer()->getAtk()
-				for (cGoodsData* vec : m_pEquipment->getVecEquipment())
-				{
-					if (vec->iID == pData->iID)
-					{
+				for (cGoodsData* vec : m_pEquipment->getVecEquipment()) {
+					if (vec->iID == pData->iID) {
 						m_iDef -= pData->iDef;
 						m_iAtk -= pData->iAtk;
 						pData->iBagCount++;
@@ -202,23 +189,19 @@ void cPlayer::bonus(string inOrOut, cGoodsData* pData)
 			}
 		}
 	}
-	else if (inOrOut == "out")
-	{
+	else if (inOrOut == "out") {
 		m_iDef -= pData->iDef;
 		m_iAtk -= pData->iAtk;
 	}
 }
 
-void cPlayer::hurt(const int& enemyID, bool hurt)
-{
-	//GET_pSCENEMAIN;
+void cPlayer::hurt(const int& enemyID, bool hurt) {
+	// GET_pSCENEMAIN;
 	GET_pCURENTSCENE;
-	if (hurt)
-	{
+	if (hurt) {
 		int iDamage = pCurentScene->getEnemyRuler()->getSingleEnemy(enemyID)->getAtk();
 		m_iHP -= (iDamage > m_iDef ? iDamage - m_iDef : iDamage * 0.05);
-		if (m_iHP <= 0)
-		{
+		if (m_iHP <= 0) {
 			system("cls");
 			m_iHP = 0;
 			cout << "you are dead!" << endl;
@@ -226,39 +209,32 @@ void cPlayer::hurt(const int& enemyID, bool hurt)
 		}
 	}
 }
-//处理
-void cPlayer::experience(const int& EXP)
-{
+
+// 处理
+void cPlayer::experience(const int& EXP) {
 	int tempEXP = 0;
-	//当经验值盈满时升级
+	// 当经验值盈满时升级
 	m_iEXP += EXP;
-	//当获得大量经验时
-	while (m_iEXP >= m_iEXPMax)
-	{
+	// 当获得大量经验时
+	while (m_iEXP >= m_iEXPMax)	{
 		tempEXP = m_iEXP - m_iEXPMax;
 		m_iLevel++;
 		m_iHP += 10, m_iDef += 10, m_iAtk += 10, m_iEXPMax += 10;
 		m_iEXP = tempEXP;
 
 	}
-
 }
-//打印经验条
-void cPlayer::experienceRender()
-{
-	for (int i = 0; i < 36; i++)
-	{
-		if (i < 36 * m_iEXP / m_iEXPMax)
-			cout << "■";
-		else
-			cout << "□";
+
+// 打印经验条
+void cPlayer::experienceRender() {
+	for (int i = 0; i < 36; i++) {
+		i < 36 * m_iEXP / m_iEXPMax ? cout << "■" : cout << "□";
 	}
 	cout << endl;
-
 }
 
-void cPlayer::propertyRender()
-{
+void cPlayer::propertyRender() {
+	// printf("\tName\tRole\t\tAtk\tDef\tHP\tGrowth\tImg\tAcount\t\n");
 	cout << "\tName\t" << "Role\t\t" << "Atk\t" << "Def\t" << "HP\t" << "Growth\t" << "Img\t" << "Acount\t" << endl;
 	cout
 		<< "\t"
@@ -272,8 +248,7 @@ void cPlayer::propertyRender()
 		<< m_iAcount << "\t" << endl;
 }
 
-void cPlayer::petInit(cPetData* pData)
-{
+void cPlayer::petInit(cPetData* pData) {
 	m_iAtk += pData->iGain;
 	m_iDef += pData->iGain;
 	m_strPetImg = pData->iImg;

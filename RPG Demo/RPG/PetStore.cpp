@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "PetStore.h"
 
-cPetStore::cPetStore()
-{
+cPetStore::cPetStore() {
 	m_strName = "Pet";
 	m_iState = 0;
 	storage();
 	//initialize();
 }
+
 //cPetStore::cPetStore()
 //{
 //	m_strName = "Store";
@@ -16,29 +16,22 @@ cPetStore::cPetStore()
 //	//初始化商品数据
 //}
 
-
-cPetStore::~cPetStore()
-{
+cPetStore::~cPetStore() {
 }
 
-void cPetStore::update()
-{
+void cPetStore::update() {
 	//GET_pCURENTSCENE;
 	GET_pSCENEMAIN;
-	if (KEY_DOWN(VK_DOWN))
-	{
+	if (KEY_DOWN(VK_DOWN)) {
 		m_iState++;
 	}
-	else if (KEY_DOWN(VK_UP))
-	{
+	else if (KEY_DOWN(VK_UP)) {
 		m_iState--;
 	}
-	else if (KEY_DOWN(VK_ESCAPE))
-	{
+	else if (KEY_DOWN(VK_ESCAPE)) {
 		cDirector::getInstance()->popScene();
 	}
-	else if (KEY_DOWN(VK_RETURN))
-	{
+	else if (KEY_DOWN(VK_RETURN)) {
 		pSceneMain->getPlayer()->havePet = true;
 		cPetStore* pData = m_vecPets[m_iState];
 		//cEmitter::getInstance()->emitNews("buyGoods", pData);
@@ -49,13 +42,9 @@ void cPetStore::update()
 		m_iState = 0;
 	else if (m_iState >= m_vecPets.size())
 		m_iState = m_vecPets.size() - 1;
-
-
 }
 
-
-void cPetStore::render()
-{
+void cPetStore::render() {
 	//GET_pCURENTSCENE;
 	GET_pSCENEMAIN;
 	//玩家属性渲染
@@ -64,8 +53,7 @@ void cPetStore::render()
 	cNPC* pNPC = pSceneMain->getNPCRuler()->getNPCByID(pSceneMain->getSurroundPlayer());
 	cout << endl << endl << "\t\t" << "欢迎来到" << pNPC->getName() << "的" << pNPC->getOccupation() << endl;
 	cout << "\tName\t\t" << "Img\t" << "Gain\t" << endl;
-	for (int i = 0; i < m_vecPets.size(); i++)
-	{
+	for (int i = 0; i < m_vecPets.size(); i++) {
 		cPetStore* pData = m_vecPets[i];
 
 		if (m_iState == i)
@@ -77,7 +65,6 @@ void cPetStore::render()
 			<< pData->iImg << "\t"
 			<< pData->iGain << "\t"
 			<< endl;
-
 	}
 	//玩家背包渲染
 	//cout << endl << endl << "		It is " << pSceneMain->getPlayer()->getName() << "'s bag."
@@ -93,16 +80,13 @@ void cPetStore::render()
 	//		<< pData->iBagCount << "\t"
 	//		<< pData->iPrice << "\t"
 	//		<< pData->strDetail << "\t" << endl;
-
 	//}
 }
 
 //初始化
-void cPetStore::storage()
-{
+void cPetStore::storage() {
 	vector<cDataBase*> vec = cDataRuler::getInstance()->getDataRuler("PetsDataRuler")->getVecData();
-	for (cDataBase* pData : vec)
-	{
+	for (cDataBase* pData : vec) {
 		cPetStore* p = new cPetStore();
 		cPetData* tempGoods = static_cast<cPetData*>(pData);
 		p->init(tempGoods);
@@ -110,8 +94,7 @@ void cPetStore::storage()
 	}
 }
 
-void cPetStore::init(cPetData* pData)
-{
+void cPetStore::init(cPetData* pData) {
 	iID = pData->iID,
 		iRow = pData->iRow,
 		iCol = pData->iCol,

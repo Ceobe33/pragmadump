@@ -3,8 +3,7 @@
 
 #include "SceneBase.h"
 
-class cDirector
-{
+class cDirector {
 public:
 	~cDirector();
 

@@ -6,7 +6,14 @@
 #include "Clert.h"
 #include "Bag.h"
 
-cSceneMain::cSceneMain() {
+cSceneMain::cSceneMain()
+	:pEnemyData(nullptr),
+	m_iSurroundPlayer(0),
+	m_bSurroundNPC(false),
+	m_bTrainning(false),
+	m_bEnemyPropertyRender(false),
+	m_iMapID(200)
+{
 	m_strName = "Game";
 	m_pPlayer = new cPlayer();
 
@@ -16,15 +23,17 @@ cSceneMain::cSceneMain() {
 	m_pStore = new cStore();
 	m_pFireRuler = new cFireRuler();
 
-	pEnemyData = nullptr;
-	//玩家周围NPC的ID
-	m_iSurroundPlayer = 0;
-	//NPC周围是否有玩家
-	m_bSurroundNPC = false;
-	m_bTrainning = false;
-	m_bEnemyPropertyRender = false;
+	// initialize with another way
+	// pEnemyData = nullptr;
+	// 玩家周围NPC的ID
+	// m_iSurroundPlayer = 0;
+	// NPC周围是否有玩家
+	// m_bSurroundNPC = false;
+	// m_bTrainning = false;
+	// m_bEnemyPropertyRender = false;
 	//地图ID从200开始
-	m_iMapID = 200;
+	// m_iMapID = 200;
+
 	m_pCurentMap = cMap::getInstance()->getMapByID(m_iMapID);
 	//初始化玩家位置
 	m_pPlayer->setPosition(m_pCurentMap->m_iPlayerRow, m_pCurentMap->m_iPlayerCol);
@@ -40,9 +49,7 @@ void cSceneMain::update() {
 
 	//如果NPC周围四格有玩家
 	if (m_bSurroundNPC)	{
-
-		if (KEY_DOWN(VK_RETURN))
-		{
+		if (KEY_DOWN(VK_RETURN)) {
 			if (405 == m_iSurroundPlayer) {
 				m_bTrainning = true;
 				m_iMapID = 203;
@@ -243,6 +250,7 @@ void cSceneMain::render() {
 		<< m_pPlayer->getAcount() << "\t" << endl;
 	cout
 		<< m_iMapID << "\t" << n << endl
+		<< "player\trows\tcols\n\t"
 		<< m_pPlayer->getRow() << "\t" << m_pPlayer->getCol() << endl;
 	//敌人属性信息
 	if (m_EnemyTemp)

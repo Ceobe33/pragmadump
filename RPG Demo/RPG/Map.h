@@ -1,8 +1,7 @@
 #ifndef RPG_RPG_MAP_H_
 #define RPG_RPG_MAP_H_
 
-class cMap
-{
+class cMap {
 public:
 	~cMap();
 	//void initialize(cMapData* data);

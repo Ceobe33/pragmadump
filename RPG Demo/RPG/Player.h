@@ -70,7 +70,6 @@ private:
 
 	int m_iID,m_iState,m_iHPMax;
 	// player move cache, to prevent system to fluquent and player move too fast
-	int m_iMoveCache;
 };
 
 #endif // !RPG_RPG_PLAYER_H_

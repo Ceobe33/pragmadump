@@ -1,8 +1,10 @@
-#pragma once
+#ifndef RPG_RPG_PETSTORE_H_
+#define RPG_RPG_PETSTORE_H_
+
 #include "SceneBase.h"
 //#include "SceneMain.h"
-class cPetStore:public cSceneBase
-{
+
+class cPetStore :public cSceneBase {
 public:
 	cPetStore();
 	~cPetStore();
@@ -25,3 +27,5 @@ private:
 	int m_iState;
 	vector<cPetStore*> m_vecPets;
 };
+
+#endif // !RPG_RPG_PETSTORE_H_

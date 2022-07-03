@@ -4,8 +4,7 @@
 #include "Node.h"
 
 //³¡¾°»ùÀà
-class cSceneBase :public cNode
-{
+class cSceneBase :public cNode {
 public:
 	cSceneBase();
 	~cSceneBase();

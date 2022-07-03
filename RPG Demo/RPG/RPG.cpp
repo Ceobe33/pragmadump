@@ -17,6 +17,8 @@
 //战斗界面退出后重置
 //丢弃装备？ experienceMax 升级后加10  角色各项属性增加
 
+// TODO : besure all the key operator under the director control
+
 //保留：直接在地图数据里写上相应角色ID就不需要手动设置他的row col 了
 #include "stdafx.h"
 #include "Menu.h"

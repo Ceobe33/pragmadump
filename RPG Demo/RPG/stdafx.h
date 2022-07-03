@@ -14,6 +14,9 @@
 // 读取数据文件头文件
 #include <fstream>
 #include <string>
+#include <format>
+#include <string_view>
+// #include <fmt>
 // setw（）函数，定义输出宽度函数
 #include <iomanip>
 #include <time.h>
@@ -27,7 +30,7 @@
 
 using namespace std;
 
-#define KEY_DOWN(vk_code) (GetAsyncKeyState(vk_code)&0x8000?1:0)
+#define KEY_DOWN(vk_code) ((GetAsyncKeyState(vk_code)&0x8000?1:0) /*&& m_iMoveCache % */)
 #define VK_B           0x42
 #define VK_E           0x45
 
@@ -77,5 +80,6 @@ enum {
 // extern cDataRuler* dataRuler;
 // extern cRuler* ruler;
 // TODO:  在此处引用程序需要的其他头文件
+int iMoveCache = 0;
 
 #endif // !RPG_RPG_STDAFX_H_
