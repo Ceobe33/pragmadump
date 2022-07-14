@@ -1,5 +1,5 @@
 ## RPG Demo
-This is my first cpp project, though here has a lot of bugs :( . I'll look after and fix all of them! 
+This is my cpp project, though here has a lot of bugs :( . I'll look after and fix all of them! 
 - killing them all!!
 
 ### about this
@@ -9,12 +9,17 @@ Here, offered some role you can select(although all the same:P) ,and then use ar
 
 (emm now.. is too late, I'll go to bed, good ni-night)
 
+Jul. 4, 2022
 And til today I had update half directory file format, and fix some little bug.
 I can feel it that is step by step turns better and better ^ ^
 
+Jul. 14, 2022
+After those days I had modified most of the project coding standard. Is it looks more better, right? (At least it is :D)
+And other function will keep completing. Come on!
+
 
 ## 角色扮演小demo
-这!是我第一个C++的项目, 虽然这里面还有很多的`bug`, 但是!我会慢慢地一个不留的把他们全部驱逐出去!
+这是我一个使用C++制作的项目, 虽然这里面还有很多的`bug`, 但是!我会慢慢地一个不留的把他们全部驱逐出去!
 
 ### 关于这个项目
 在下载这个小demo之后, 双击解决方案然后选一个你喜欢的姿势,然后就可以开始愉快地玩耍了(有可能会不太愉快, 但是... 玩儿嘛!\~\~).
