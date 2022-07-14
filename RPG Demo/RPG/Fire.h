@@ -10,8 +10,8 @@ public:
 	void render();
 	void setPosition(const int &r, const int &c, const int &direction, const int &tag);
 	//interface
-	CC_GET_SET_PRIVATE(int, Tag, m_iTag);
-	CC_GET_SET_PRIVATE(int, Distance, m_iDistance);
+	GET_SET_PRIVATE(int, Tag, m_iTag);
+	GET_SET_PRIVATE(int, Distance, m_iDistance);
 private:
 	//int m_iTag;
 	int m_iDirection;
@@ -28,7 +28,7 @@ public:
 	void update();
 	void load(const int & i, const int &j, const int &dir, const int &tag);
 
-	CC_GET_SET_PRIVATE(cFire*, Fire, m_pFire);
+	GET_SET_PRIVATE(cFire*, Fire, m_pFire);
 private:
 	vector<cFire*> m_vecFire;
 	//cFire* m_pFire;

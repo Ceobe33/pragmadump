@@ -200,7 +200,7 @@ void cPlayer::hurt(const int& enemyID, bool hurt) {
 	GET_pCURENTSCENE;
 	if (hurt) {
 		int iDamage = pCurentScene->getEnemyRuler()->getSingleEnemy(enemyID)->getAtk();
-		m_iHP -= (iDamage > m_iDef ? iDamage - m_iDef : iDamage * 0.05);
+		m_iHP -= int(iDamage > m_iDef ? iDamage - m_iDef : iDamage * 0.05);
 		if (m_iHP <= 0) {
 			system("cls");
 			m_iHP = 0;
@@ -251,7 +251,7 @@ void cPlayer::propertyRender() {
 void cPlayer::petInit(cPetData* pData) {
 	m_iAtk += pData->iGain;
 	m_iDef += pData->iGain;
-	m_strPetImg = pData->iImg;
+	m_strPetImg = pData->strImg;
 	m_iPetRowBackup = m_iPetRow = m_iBackupRow;
 	m_iPetColBackup = m_iPetCol = m_iBackupCol;
 }

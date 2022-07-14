@@ -1,21 +1,16 @@
 #include "stdafx.h"
 #include "DataStruct.h"
 
-
-cDataStruct::cDataStruct()
-{
+cDataStruct::cDataStruct() {
 }
 
-void cRoleSelectDataRuler::load()
-{
+void cRoleSelectDataRuler::load() {
 	fstream loadFile("data/100_characters.txt");
-	if (loadFile)
-	{
+	if (loadFile) {
 		getline(loadFile, string());
 		int iRowAmount;
 		loadFile >> iRowAmount;
-		for (int i = 0; i < iRowAmount; i++)
-		{
+		for (int i = 0; i < iRowAmount; i++) {
 			cRoleSelectData* data = new cRoleSelectData();
 			loadFile 
 				>> data->iID >> data->m_strName
@@ -25,7 +20,6 @@ void cRoleSelectDataRuler::load()
 		}
 		int a = 0;
 	}
-
 }
 //
 //cMapData* cMapDataRuler::getMapById(int mapID)
@@ -40,23 +34,17 @@ void cRoleSelectDataRuler::load()
 //	return nullptr;
 //}
 
-void cMapDataRuler::load()
-{
+void cMapDataRuler::load() {
 	fstream loadFile("data/200_map.txt");
-	if (loadFile)
-	{
+	if (loadFile) {
 		getline(loadFile, string());
 		int mapAmount;
 		loadFile >> mapAmount;
-		for (int i = 0; i < mapAmount; i++)
-		{
+		for (int i = 0; i < mapAmount; i++) {
 			cMapData* data = new cMapData();
 			loadFile >> data->iID >> data->m_iRow >> data->m_iCol >> data->m_iPlayerRow >> data->m_iPlayerCol;
-			for (int p = 0; p < data->m_iRow; p++)
-			{
-				for (int q = 0; q < data->m_iCol; q++)
-				{
-					
+			for (int p = 0; p < data->m_iRow; p++) {
+				for (int q = 0; q < data->m_iCol; q++) {
 					loadFile >> data->m_arrMap[p][q];
 					/*if (m_arrMap[p][q] >= 500 && m_arrMap[p][q] < 600)
 					{
@@ -70,36 +58,30 @@ void cMapDataRuler::load()
 	int a = 0;
 }
 
-void cGoodsDataRuler::load()
-{
+void cGoodsDataRuler::load() {
 	fstream loadFile("data/300_goods.txt");
-	if (loadFile)
-	{
+	if (loadFile) {
 		getline(loadFile, string());
 		int iRowAmount;
 		loadFile >> iRowAmount;
-		for (int i = 0; i < iRowAmount; i++)
-		{
+		for (int i = 0; i < iRowAmount; i++) {
 			cGoodsData* data = new cGoodsData();
 			loadFile
 				>> data->iID >> data->strName >> data->iAtk >> data->iHeal
-				 >> data->iNPCID >> data->iAmount >> data->iPrice >> data->strTag>>data->iDef>>data->strDetail;
+				>> data->iNPCID >> data->iAmount >> data->iPrice >> data->strTag>>data->iDef>>data->strDetail;
 			m_vecDataBase.push_back(data);
 		}
 	}
 	int a = 0;
 }
 
-void cNPCDataRuler::load()
-{
+void cNPCDataRuler::load() {
 	fstream loadFile("data/400_npc.txt");
-	if (loadFile)
-	{
+	if (loadFile) {
 		getline(loadFile, string());
 		int iRowAmount;
 		loadFile >> iRowAmount;
-		for (int i = 0; i < iRowAmount; i++)
-		{
+		for (int i = 0; i < iRowAmount; i++) {
 			cNPCData* data = new cNPCData();
 			loadFile
 				>> data->iID >> data->strName >> data->strOccupation
@@ -110,16 +92,13 @@ void cNPCDataRuler::load()
 	int a = 0;
 }
 
-void cEnemyDataRuler::load()
-{
+void cEnemyDataRuler::load() {
 	fstream loadFile("data/500_enemy.txt");
-	if (loadFile)
-	{
+	if (loadFile) {
 		getline(loadFile, string());
 		int iRowAmount;
 		loadFile >> iRowAmount;
-		for (int i = 0; i < iRowAmount; i++)
-		{
+		for (int i = 0; i < iRowAmount; i++) {
 			cEnemyData* data = new cEnemyData();
 			loadFile
 				>> data->iID >> data->strName >>data->iRow >> data->iCol >> data->iAtk >> data->iDef >> data->iHp>> data->strImg
@@ -129,28 +108,24 @@ void cEnemyDataRuler::load()
 	}
 	int a = 0;
 }
-void cPetDataRuler::load()
-{
+
+void cPetDataRuler::load() {
 	fstream loadFile("data/600_pet.txt");
-	if (loadFile)
-	{
+	if (loadFile) {
 		getline(loadFile, string());
 		int iRowAmount;
 		loadFile >> iRowAmount;
-		for (int i = 0; i < iRowAmount; i++)
-		{
+		for (int i = 0; i < iRowAmount; i++) {
 			cPetData* data = new cPetData();
 			loadFile
-				>> data->iID >> data->strName >> data->iRow >> data->iCol >> data->iGain ;
+				>> data->iID >> data->strName >> data->iRow >> data->iCol >> data->strImg >>data->iGain ;
 			m_vecDataBase.push_back(data);
 		}
 	}
 }
 
-
 //代理类,用来下载数据 整个游戏只需要运行一次
-cLoad::cLoad()
-{
+cLoad::cLoad() {
 	cMapDataRuler* pMapDataRuler = new cMapDataRuler();
 	pMapDataRuler->load();
 	cDataRuler::getInstance()->addDataRuler("MapDataRuler", pMapDataRuler);
@@ -173,9 +148,8 @@ cLoad::cLoad()
 
 	cPetDataRuler* pPetDataRuler = new cPetDataRuler();
 	pPetDataRuler->load();
-	cDataRuler::getInstance()->addDataRuler("PetDataRuler", pPetDataRuler);
+	cDataRuler::getInstance()->addDataRuler("PetsDataRuler", pPetDataRuler);
 }
 
-cLoad::~cLoad()
-{
+cLoad::~cLoad() {
 }

@@ -18,6 +18,9 @@
 //丢弃装备？ experienceMax 升级后加10  角色各项属性增加
 
 // TODO : besure all the key operator under the director control
+// 
+// aobut expression
+// TODO : delay character be damaged color time
 
 //保留：直接在地图数据里写上相应角色ID就不需要手动设置他的row col 了
 #include "stdafx.h"
@@ -25,8 +28,7 @@
 
 //cDataRuler* dataRuler;
 //cRuler* ruler;
-int _tmain(int argc, _TCHAR* argv[])
-{
+int _tmain(int argc, _TCHAR* argv[]) {
 	//初始化
 	//管理者模式 每次用都需要new出来
 	//dataRuler = new cDataRuler();

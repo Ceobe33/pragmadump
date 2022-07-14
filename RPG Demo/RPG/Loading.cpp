@@ -3,44 +3,36 @@
 #include"map.h"
 
 cLoading* cLoading::m_pInstanceLoading= nullptr;
-cLoading::cLoading()
-{
+cLoading::cLoading() {
 	m_strName = "Loading";
-	
 }
 
-
-cLoading::~cLoading()
-{
+cLoading::~cLoading() {
 }
 
-void cLoading::update()
-{
-	
+void cLoading::update() {
 }
 
-void cLoading::render()
-{
+void cLoading::render() {
 	system("cls");
 	cout << endl << endl << endl << endl << endl << endl << endl << endl 
 		<< endl << endl <<"                          Loading..."<< endl
 		<<endl;
 	int a = 100;
-	for (int i = 0; i < 33; i++)
-	{
-		switch (i)
-		{
+	for (int i = 0; i < 33; i++) {
+		switch (i) {
 		case 5:
-			a -= a*0.9;
+			// the size_type convert is to solve the warning C4244
+			a -= int(a * 0.9);
 			break;
 		case 20:
-			a -= a*0.05;
+			a -= int(a * 0.05);
 			break;
 		case 30:
-			a -= a*0.04;
+			a -= int(a * 0.04);
 			break;
 		case 32:
-			a -= a*0.01;
+			a -= int(a * 0.01);
 			break;
 		}
 
@@ -61,10 +53,8 @@ void cLoading::render()
 		*/
 }
 
-cLoading* cLoading::getInstance()
-{
-	if (!m_pInstanceLoading)
-	{
+cLoading* cLoading::getInstance() {
+	if (!m_pInstanceLoading) {
 		m_pInstanceLoading = new cLoading();
 	}
 	return m_pInstanceLoading;

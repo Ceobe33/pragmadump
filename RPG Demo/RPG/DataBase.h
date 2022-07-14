@@ -1,16 +1,17 @@
 #pragma once
+#ifndef RPG_RPG_DATABASE_H_
+#define RPG_RPG_DATABASE_H_
 
-class cDataBase //数据基类
-{
+// 数据基类
+class cDataBase {
 public:
 	int iID;
 
 private:
 };
 
-
-class cDataBaseRuler //数据管理者基类
-{
+// 数据管理者基类
+class cDataBaseRuler {
 public:
 	~cDataBaseRuler();
 
@@ -18,10 +19,12 @@ public:
 	static cDataBaseRuler* getInstance();
 	cDataBase* getDataByID(const int& m_iID);
 	vector<cDataBase*> getVecData();
-	//CC_GET_PRIVATE(vector<cDataBase*>, VecData, m_vecDataBase);
+	//GET_PRIVATE(vector<cDataBase*>, VecData, m_vecDataBase);
 private:
 protected:
 	cDataBaseRuler();
 	static cDataBaseRuler* m_pInstanceDataBaseRuler;
 	vector<cDataBase*> m_vecDataBase;
 };
+
+#endif // !RPG_RPG_DATABASE_H_

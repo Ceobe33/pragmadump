@@ -3,10 +3,8 @@
 #include "NPC.h"
 #include "SceneMain.h"
 
-
 //cStore* cStore::m_pInstance = nullptr;
-cStore::cStore()
-{
+cStore::cStore() {
 	m_strName = "Store";
 	m_iState = 0;
 	m_pPlayer = new cPlayer();
@@ -14,9 +12,7 @@ cStore::cStore()
 	initialize();
 }
 
-
-cStore::~cStore()
-{
+cStore::~cStore() {
 }
 
 //void cStore::getInstance()
@@ -28,43 +24,32 @@ cStore::~cStore()
 //	m_pInstance = nullptr;
 //}
 
-void cStore::update()
-{
+void cStore::update() {
 	//GET_pCURENTSCENE;
 	GET_pSCENEMAIN;
-	if (KEY_DOWN(VK_DOWN))
-	{
+	if (KEY_DOWN(VK_DOWN)) {
 		m_iState++;
-	}
-	else if (KEY_DOWN(VK_UP))
-	{
+	} else if (KEY_DOWN(VK_UP))	{
 		m_iState--;
-	}
-	else if (KEY_DOWN(VK_ESCAPE))
-	{
+	} else if (KEY_DOWN(VK_ESCAPE))	{
 		cDirector::getInstance()->popScene();
-	}
-	else if (KEY_DOWN(VK_RETURN))
-	{
+	} else if (KEY_DOWN(VK_RETURN))	{
 		cGoodsData* pData = m_vecItems[m_iState];
-		if (pData->iAmount != 0)
-		{
+		if (pData->iAmount != 0) {
 			cEmitter::getInstance()->emitNews("buyGoods",pData);
 			//pSceneMain->getPlayer()->buyGoods(pData);
 		}
 		//sellGoods();
 	}
-	if (m_iState < 0)
+	int itemVecSize = int(m_vecItems.size());
+	if (m_iState < 0) {
 		m_iState = 0;
-	else if (m_iState >= m_vecItems.size())
-		m_iState = m_vecItems.size() - 1;
-
-
+	} else if (m_iState >= itemVecSize) {
+		m_iState = itemVecSize - 1;
+	}
 }
 
-
-void cStore::render()
-{
+void cStore::render() {
 	//GET_pCURENTSCENE;
 	GET_pSCENEMAIN;
 	//玩家属性渲染
@@ -73,8 +58,7 @@ void cStore::render()
 	cNPC* pNPC = pSceneMain->getNPCRuler()->getNPCByID(pSceneMain->getSurroundPlayer());
 	cout << endl << endl <<"\t\t"<< "欢迎来到" << pNPC->getName()<< "的" <<pNPC->getOccupation()<<endl;
 		cout << "\tName\t\t" << "Atk\t" << "Heal\t" << "Amount\t" << "Price\t" << "details"<< endl;
-	for (int i = 0; i < m_vecItems.size(); i++)
-	{
+	for (int i = 0; i < int(m_vecItems.size()); i++)	{
 		cGoodsData* pData = m_vecItems[i];
 
 		if (m_iState == i)
@@ -94,64 +78,53 @@ void cStore::render()
 	//玩家背包渲染
 	cout << endl << endl << "		It is " << pSceneMain->getPlayer()->getName() << "'s bag."
 		<< endl << "\tName\t\t" << "Atk\t" << "Count\t" << "Price\t" << "Details\t" << endl;
-	for (int i = 0; i < pSceneMain->getPlayer()->getBag()->getVecBag().size(); i++)
-	{
-		
+
+	auto bagVector = pSceneMain->getPlayer()->getBag()->getVecBag();
+	for (int i = 0; i < int(bagVector.size()); i++)	{
 		cout << "\t";
-		cGoodsData* pData = pSceneMain->getPlayer()->getBag()->getVecBag()[i];
+		cGoodsData* pData = bagVector[i];
 		cout
 			<< left << setw(8) << pData->strName << "\t"
 			<< pData->iAtk << "\t"
 			<< pData->iBagCount << "\t"
 			<< pData->iPrice << "\t"
 			<< pData->strDetail << "\t" << endl;
-
 	}
 }
 
 //初始化
-void cStore::initialize()
-{
+void cStore::initialize() {
 	vector<cDataBase*> vec = cDataRuler::getInstance()->getDataRuler("GoodsDataRuler")->getVecData();
-	for (cDataBase* pData : vec)
-	{
+	for (cDataBase* pData : vec) {
 		cGoodsData* tempGoods = static_cast<cGoodsData*>(pData);
 		m_vecGoods.push_back(tempGoods);
 	}
 }
 
-vector<cGoodsData*> cStore::getVectorGoods(const int& i)
-{
-	for (cGoodsData* pData : m_vecGoods)
-	{
-		if (pData->iNPCID == i)
-		{
+vector<cGoodsData*> cStore::getVectorGoods(const int& i) {
+	for (cGoodsData* pData : m_vecGoods) {
+		if (pData->iNPCID == i) {
 			m_vecItems.push_back(pData);
 		}
 	}
 	return m_vecItems;
 }
 
-void cStore::initItems(const int& i)
-{
-	for (cGoodsData* pData : m_vecGoods)
-	{
-		if (pData->iNPCID == i)
-		{
+void cStore::initItems(const int& i) {
+	for (cGoodsData* pData : m_vecGoods) {
+		if (pData->iNPCID == i) {
 			m_vecItems.push_back(pData);
 		}
 	}
 }
 
-cGoodsData* cStore::armament(const int& i)
-{
-	for (cGoodsData* vec : m_vecGoods)
-	{
-		if (vec->iID == i)
-		{
-			return vec;
+cGoodsData* cStore::armament(const int& i) {
+	for (cGoodsData* data : m_vecGoods) {
+		if (data->iID == i) {
+			return data;
 		}
 	}
+	return nullptr;
 }
 
 //void cStore::sellGoods()

@@ -1,26 +1,22 @@
 #include "stdafx.h"
 #include "Equipment.h"
 
-cEquipment::cEquipment()
+cEquipment::cEquipment() 
+	:m_iState(0)
 {
 	m_strName = "Equipment";
-	m_iState = 0;
 }
-void cEquipment::update()
-{
+
+void cEquipment::update() {
+	int equipmentContainerSize(m_vecEquipment.size());
 	//GET_pCURENTSCENE;
 	GET_pSCENEMAIN;
-	if (KEY_DOWN(VK_ESCAPE))
-	{
+	if (KEY_DOWN(VK_ESCAPE)) {
 		cDirector::getInstance()->popScene();
 		//cDirector::getInstance()->popScene();
-	}
-	else if (KEY_DOWN(VK_RETURN))
-	{
-		for (int i = 0; i < m_vecEquipment.size(); i++)
-		{
-			if (i == m_iState)
-			{
+	} else if (KEY_DOWN(VK_RETURN)) {
+		for (int i = 0; i < equipmentContainerSize; i++) {
+			if (i == m_iState) {
 				cGoodsData* pData = pSceneMain->getStore()->armament(m_vecEquipment[i]->iID);
 				pSceneMain->getPlayer()->getBag()->addGoods(pData);//
 
@@ -28,8 +24,7 @@ void cEquipment::update()
 
 				if (m_vecEquipment[i]->iEquipmentCount > 0)
 					m_vecEquipment[i]->iEquipmentCount--;
-				if (m_vecEquipment[i]->iEquipmentCount == 0)
-				{
+				if (m_vecEquipment[i]->iEquipmentCount == 0) {
 					m_iState = 0;
 					m_vecEquipment.erase(m_vecEquipment.begin() + i);
 					system("cls");
@@ -37,22 +32,16 @@ void cEquipment::update()
 				break;
 			}
 		}
-	}
-	else if (KEY_DOWN(VK_DOWN))
-	{
-		if (m_iState < m_vecEquipment.size() - 1)
+	} else if (KEY_DOWN(VK_DOWN))	{
+		if (m_iState < equipmentContainerSize - 1)
 			m_iState++;
-	}
-	else if (KEY_DOWN(VK_UP))
-	{
+	} else if (KEY_DOWN(VK_UP)) {
 		if (m_iState > 0)
 			m_iState--;
 	}
-
 }
 
-void cEquipment::render()
-{
+void cEquipment::render() {
 	GET_pSCENEMAIN;
 	//Íæ¼ÒÊôÐÔÏÔÊ¾
 	pSceneMain->getPlayer()->propertyRender();
@@ -60,8 +49,7 @@ void cEquipment::render()
 	cout << endl << endl << "		It is " << m_strName << "'s equipment."
 		<< endl << "\tName\t\t" << "Atk\t" << "Count\t" << "Price\t" << "Details\t" << endl;
 
-	for (int i = 0; i < m_vecEquipment.size(); i++)
-	{
+	for (int i = 0; i < int(m_vecEquipment.size()); i++) {
 		if (i == m_iState)
 			cout << "-->\t";
 		else
@@ -76,13 +64,10 @@ void cEquipment::render()
 	}
 }
 
-vector<cGoodsData*> cEquipment::getVecEquipment()
-{
+vector<cGoodsData*> cEquipment::getVecEquipment() {
 	return m_vecEquipment;
 }
 
-void cEquipment::addEquipment(cGoodsData* pData)
-{
-
+void cEquipment::addEquipment(cGoodsData* pData) {
 	m_vecEquipment.push_back(pData);
 }

@@ -2,7 +2,7 @@
 // 或是经常使用但不常更改的
 // 特定于项目的包含文件
 //
-
+#pragma once
 #ifndef RPG_RPG_STDAFX_H_
 #define RPG_RPG_STDAFX_H_
 
@@ -27,6 +27,7 @@
 #include <cmath>
 // 消息机制的头文件
 #include <functional>
+#include <assert.h>
 
 using namespace std;
 
@@ -35,14 +36,14 @@ using namespace std;
 #define VK_E           0x45
 
 // ##是粘合符
-#define CC_GET_SET_PRIVATE(dataType, functionName, valueName) \
+#define GET_SET_PRIVATE(dataType, functionName, valueName) \
 	dataType get##functionName(){ return valueName; }\
 	void set##functionName(dataType value){ valueName = value; } \
 	private:\
 	dataType valueName; \
 	public:
 
-#define CC_GET_PRIVATE(dataType, functionName, valueName) \
+#define GET_PRIVATE(dataType, functionName, valueName) \
 	dataType get##functionName(){ return valueName; } \
 	private:\
 	dataType valueName; \
@@ -58,7 +59,7 @@ enum {
 	eAir,
 	eWall,
 	ENUM,
-	eMoveCacheVal,
+	eMoveBufferVal = 5,
 	eNPCCoach = 405,
 	eMapBattle = 203,
 

@@ -1,35 +1,26 @@
-#include "stdafx.h"
 #include "Bag.h"
 
+#include "stdafx.h"
+
 cBag::cBag()
+	:m_iState(0) 
 {
 	m_strName = "Bag";
-	m_iState = 0;
 }
 
-void cBag::update()
-{
-	if (KEY_DOWN(VK_ESCAPE))
-	{
+void cBag::update() {
+	int bagSize = m_vecBag.size();
+	if (KEY_DOWN(VK_ESCAPE)) {
 		cDirector::getInstance()->popScene();
-	}
-	else if (KEY_DOWN(VK_DOWN))
-	{
-		if (m_iState < m_vecBag.size() - 1)
+	} else if (KEY_DOWN(VK_DOWN)) {
+		if (m_iState < bagSize - 1)
 			m_iState++;
-	}
-	else if (KEY_DOWN(VK_UP))
-	{
+	} else if (KEY_DOWN(VK_UP))	{
 		if (m_iState > 0)
 			m_iState--;
-	}
-
-	else if (KEY_DOWN(VK_RETURN))
-	{
-		for (int i = 0; i < m_vecBag.size(); i++)
-		{
-			if (i == m_iState)
-			{
+	} else if (KEY_DOWN(VK_RETURN))	{
+		for (int i = 0; i < bagSize; i++) {
+			if (i == m_iState) {
 				//GET_pCURENTSCENE;
 				GET_pSCENEMAIN;
 				//传相应装备ID给store 来装备到物品容器
@@ -49,8 +40,7 @@ void cBag::update()
 				//装备加成
 				//pSceneMain->getPlayer()->bonus("in",pData);
 			
-				if (m_vecBag[i]->iBagCount <= 0)
-				{
+				if (m_vecBag[i]->iBagCount <= 0) {
 					deleteGoods(m_vecBag[i]->strName);
 					//m_vecBag.erase(m_vecBag.begin() + i);
 					m_iState = 0;
@@ -58,15 +48,11 @@ void cBag::update()
 				}
 				break;
 			}
-			
 		}
 	}
-
-
 }
 
-void cBag::render()
-{
+void cBag::render() {
 	//GET_pCURENTSCENE;
 	GET_pSCENEMAIN;
 	//玩家属性显示
@@ -74,8 +60,7 @@ void cBag::render()
 	//背包物品显示
 	cout << endl << endl << "		It is " << pSceneMain->getPlayer()->getName() << "'s bag."
 		<< endl << "\tName\t\t" << "Atk\t" << "Heal\t" << "Count\t" << "Price\t" << "Details\t" << endl;
-	for (int i = 0; i < m_vecBag.size(); i++)
-	{
+	for (int i = 0; i < int(m_vecBag.size()); i++) {
 		if (i == m_iState)
 			cout << "-->\t";
 		else
@@ -93,8 +78,8 @@ void cBag::render()
 	//装备物品显示
 	cout << endl << endl << "		It is " << m_strName << "'s equipment."
 		<< endl << "\tName\t\t" << "Atk\t" << "Count\t" << "Price\t" << "Details\t" << endl;
-	for (int i = 0; i < pSceneMain->getPlayer()->getEquipment()->getVecEquipment().size(); i++)
-	{
+	int equipmentContainerSize = int(pSceneMain->getPlayer()->getEquipment()->getVecEquipment().size());
+	for (int i = 0; i < equipmentContainerSize; i++)	{
 		cout << "\t";
 		cGoodsData* pData = pSceneMain->getPlayer()->getEquipment()->getVecEquipment()[i];
 		cout
@@ -107,42 +92,35 @@ void cBag::render()
 	}
 }
 
-
-cGoodsData* cBag::takeGoods(string name)
-{
-	for (cGoodsData* pData : m_vecBag)
-	{
+cGoodsData* cBag::takeGoods(string name) {
+	for (cGoodsData* pData : m_vecBag) {
 		if (pData->strName == name)
 			return pData;
 	}
+	return nullptr;
 }
 
-void cBag::deleteGoods(string name)
-{
-	for (int i = 0; i < m_vecBag.size(); i++)
-	{
-		if (m_vecBag[i]->strName == name)
-		{
+void cBag::deleteGoods(string name) {
+	for (int i = 0; i < int(m_vecBag.size()); i++) {
+		if (m_vecBag[i]->strName == name) {
 			m_vecBag.erase(m_vecBag.begin() + i);
 			return;
 		}
 	}
 }
-void cBag::addGoods(cGoodsData* goods)
-{
+
+void cBag::addGoods(cGoodsData* goods) {
 	if (goods->iAmount > 0)
 		goods->iAmount--;
 	goods->iBagCount++;
-	for (cGoodsData* pData : m_vecBag)
-	{
-		if (goods->iID == pData->iID)
-		{
+	for (cGoodsData* pData : m_vecBag) {
+		if (goods->iID == pData->iID) {
 			return;
 		}
 	}
 	m_vecBag.push_back(goods);
-
 }
+
 //
 //void cBag::unload(cGoodsData* pData)
 //{
@@ -157,7 +135,6 @@ void cBag::addGoods(cGoodsData* goods)
 //	m_vecBag.push_back(pData);
 //}
 
-vector<cGoodsData*> cBag::getVecBag()
-{
+vector<cGoodsData*> cBag::getVecBag() {
 	return m_vecBag;
 }

@@ -1,4 +1,7 @@
 #pragma once
+#ifndef RPG_RPG_DATARULER_H_
+#define RPG_RPG_DATARULER_H_
+
 #include "DataStruct.h"
 #include "DataBase.h"
 
@@ -9,7 +12,7 @@ public:
 	void addDataRuler(string dataRulerName, cDataBaseRuler* dataRuler);
 	cDataBaseRuler* getDataRuler(string dataRulerName);
 
-	//CC_GET_PRIVATE(map<string, cDataBaseRuler*>, MapDataRuler, m_mapDataRuler);
+	//GET_PRIVATE(map<string, cDataBaseRuler*>, MapDataRuler, m_mapDataRuler);
 	//map<string, cDataBaseRuler*> getMapDataRuler();
 	//µ¥ÀýÄ£Ê½
 	static cDataRuler* getInstance();
@@ -19,3 +22,4 @@ private:
 	static cDataRuler* m_pInstance;
 };
 
+#endif // !RPG_RPG_DATARULER_H_

@@ -18,10 +18,10 @@ public:
 	//vector<cGoodsData*> getVectorPets(const int& i);
 	//vector<cGoodsData*> getVectorItems(const int &i);
 
-	/*CC_GET_PRIVATE(vector<cGoodsData*>, VecGoods, m_vecGoods);
-	CC_GET_PRIVATE(vector<cGoodsData*>, VecItems, m_vecItems);*/
+	/*GET_PRIVATE(vector<cGoodsData*>, VecGoods, m_vecGoods);
+	GET_PRIVATE(vector<cGoodsData*>, VecItems, m_vecItems);*/
 	int iID, iRow, iCol, iGain;
-	string	strName, iImg;
+	string	strName, strImg;
 private:
 	//static cStore* m_pInstance;
 	int m_iState;

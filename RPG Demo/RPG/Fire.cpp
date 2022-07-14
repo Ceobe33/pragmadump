@@ -67,7 +67,7 @@ void cFireRuler::load(const int & i, const int &j, const int &dir,const int &tag
 }
 
 void cFireRuler::update() {
-	for (int i = 0; i < m_vecFire.size(); i++) {
+	for (int i = 0; i < int(m_vecFire.size()); i++) {
 		if (m_pFire->getDistance()) {
 			m_vecFire.erase(m_vecFire.begin() + i);
 		}

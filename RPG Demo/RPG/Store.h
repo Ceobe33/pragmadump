@@ -16,8 +16,8 @@ public:
 	vector<cGoodsData*> getVectorGoods(const int &i);
 	//vector<cGoodsData*> getVectorItems(const int &i);
 
-	/*CC_GET_PRIVATE(vector<cGoodsData*>, VecGoods, m_vecGoods);
-	CC_GET_PRIVATE(vector<cGoodsData*>, VecItems, m_vecItems);*/
+	/*GET_PRIVATE(vector<cGoodsData*>, VecGoods, m_vecGoods);
+	GET_PRIVATE(vector<cGoodsData*>, VecItems, m_vecItems);*/
 private:
 	//static cStore* m_pInstance;
 	int m_iState;

@@ -16,16 +16,16 @@ public:
 	//vector<cNPCData*> getNPCVector();
 	
 	//interface
-	//CC_GET_PRIVATE(vector<cNPCData*>, VecNPC, m_vecNPC);
+	//GET_PRIVATE(vector<cNPCData*>, VecNPC, m_vecNPC);
 	//static cNPC* getInstance();
 
-	CC_GET_PRIVATE(int, Row, m_iRow);
-	CC_GET_PRIVATE(int, Col, m_iCol);
-	CC_GET_PRIVATE(int, ID, m_iID);
-	CC_GET_PRIVATE(int, CurentMapID, m_iCurentMapID);
-	CC_GET_PRIVATE(string, Occupation, m_strOccupation);
-	CC_GET_PRIVATE(string, Dialogue, m_strDialogue);
-	CC_GET_PRIVATE(string, Name, m_strName);
+	GET_PRIVATE(int, Row, m_iRow);
+	GET_PRIVATE(int, Col, m_iCol);
+	GET_PRIVATE(int, ID, m_iID);
+	GET_PRIVATE(int, CurentMapID, m_iCurentMapID);
+	GET_PRIVATE(string, Occupation, m_strOccupation);
+	GET_PRIVATE(string, Dialogue, m_strDialogue);
+	GET_PRIVATE(string, Name, m_strName);
 private:
 	//vector<cNPCData*> m_vecNPC;
 
@@ -47,8 +47,8 @@ public:
 	cNPC* getNPCByID(const int& i);
 
 	//interface
-	CC_GET_PRIVATE(vector<cNPC*>, VecNPC, m_vecNPC);
-	//CC_GET_PRIVATE(cNPC*, NPC, m_pNPC);
+	GET_PRIVATE(vector<cNPC*>, VecNPC, m_vecNPC);
+	//GET_PRIVATE(cNPC*, NPC, m_pNPC);
 
 private:
 	//vector<cNPC*> m_vecNPC;

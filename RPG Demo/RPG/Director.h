@@ -30,6 +30,8 @@ private:
 	vector<cSceneBase*> m_pVecScene;
 	// 记录正在播放的场景
 	cSceneBase* m_pRunningScene;
+
+	int m_iPressingBuffer;
 };
 
 #endif // !RPG_RPG_DIRECTOR_H_

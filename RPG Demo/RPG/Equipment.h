@@ -8,7 +8,7 @@ public:
 	void render();
 
 	//interface
-	//CC_GET_PRIVATE(cGoodsData*,VecEquipment , m_vecEquipment);
+	//GET_PRIVATE(cGoodsData*,VecEquipment , m_vecEquipment);
 
 	vector<cGoodsData*> getVecEquipment();
 	void addEquipment(cGoodsData* pData);

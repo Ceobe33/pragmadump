@@ -38,10 +38,11 @@ void cPetStore::update() {
 		//pSceneMain->getPlayer()->buyGoods(pData);
 		m_vecPets.clear();
 	}
+	int petVecSize = int(m_vecPets.size());
 	if (m_iState < 0)
 		m_iState = 0;
-	else if (m_iState >= m_vecPets.size())
-		m_iState = m_vecPets.size() - 1;
+	else if (m_iState >= petVecSize)
+		m_iState = petVecSize - 1;
 }
 
 void cPetStore::render() {
@@ -53,7 +54,7 @@ void cPetStore::render() {
 	cNPC* pNPC = pSceneMain->getNPCRuler()->getNPCByID(pSceneMain->getSurroundPlayer());
 	cout << endl << endl << "\t\t" << "»¶Ó­À´µ½" << pNPC->getName() << "µÄ" << pNPC->getOccupation() << endl;
 	cout << "\tName\t\t" << "Img\t" << "Gain\t" << endl;
-	for (int i = 0; i < m_vecPets.size(); i++) {
+	for (int i = 0; i < int(m_vecPets.size()); i++) {
 		cPetStore* pData = m_vecPets[i];
 
 		if (m_iState == i)
@@ -62,7 +63,7 @@ void cPetStore::render() {
 			cout << "   ";
 		cout << "\t"
 			<< left << setw(8) << pData->strName << "\t"
-			<< pData->iImg << "\t"
+			<< pData->strImg << "\t"
 			<< pData->iGain << "\t"
 			<< endl;
 	}
@@ -95,12 +96,14 @@ void cPetStore::storage() {
 }
 
 void cPetStore::init(cPetData* pData) {
-	iID = pData->iID,
-		iRow = pData->iRow,
-		iCol = pData->iCol,
-		iGain = pData->iGain,
-		strName = pData->strName,
-		iImg = pData->iImg;
+	assert(pData != nullptr);
+
+	iID = pData->iID;
+	iRow = pData->iRow;
+	iCol = pData->iCol;
+	iGain = pData->iGain;
+	strName = pData->strName;
+	strImg = pData->strImg;
 }
 
 //vector<cPetData*> cPetStore::getVectorPets(const int& i)

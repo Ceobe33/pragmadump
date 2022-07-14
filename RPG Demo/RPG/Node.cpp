@@ -2,32 +2,24 @@
 #include "Node.h"
 
 cNode* cNode::m_pNodeInstance = nullptr;
-cNode::cNode()
-{
+cNode::cNode() {
 }
 
-
-cNode::~cNode()
-{
+cNode::~cNode() {
 }
 
-void cNode::update()
-{
+void cNode::update() {
 
 }
 
-void cNode::render()
-{
+void cNode::render() {
 
 }
 
-void cNode::addChild(cNode* pNode)
-{
+void cNode::addChild(cNode* pNode) {
 	//安全检查
-	if (!pNode)
-	{
-		for (cNode* pChild : m_vecChildren)
-		{
+	if (!pNode)	{
+		for (cNode* pChild : m_vecChildren) {
 			//如果容器内有该孩子节点就结束函数
 			if (pChild == pNode)
 				return;
@@ -39,41 +31,33 @@ void cNode::addChild(cNode* pNode)
 	}
 }
 
-cNode* cNode::getChildByName(string name)
-{
-	for (cNode* pChild : m_vecChildren)
-	{
-		if (pChild->nodeName == name)
-		{
+cNode* cNode::getChildByName(string name) {
+	for (cNode* pChild : m_vecChildren)	{
+		if (pChild->nodeName == name) {
 			return pChild;
 		}
 	}
 	return nullptr;
 }
 
-vector<cNode*> cNode::getChildren()
-{
-	if (!m_vecChildren.empty())
-	{
+vector<cNode*> cNode::getChildren() {
+	if (!m_vecChildren.empty())	{
 		return m_vecChildren;
 	}
+	return {};
 }
 
-cNode* cNode::getParent()
-{
+cNode* cNode::getParent() {
 	return m_pParent;
 }
 
-cNode* cNode::getInstance()
-{
-	if (!m_pNodeInstance)
-	{
+cNode* cNode::getInstance() {
+	if (!m_pNodeInstance) {
 		m_pNodeInstance = new cNode();
 	}
 	return m_pNodeInstance;
 }
 
-void cNode::setShowNode(cNode* node)
-{
+void cNode::setShowNode(cNode* node) {
 	m_pShowNode = node;
 }

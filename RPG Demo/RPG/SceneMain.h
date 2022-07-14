@@ -27,18 +27,18 @@ public:
 	
 	
 	//API
-	CC_GET_SET_PRIVATE(int, MapID, m_iMapID);
+	GET_SET_PRIVATE(int, MapID, m_iMapID);
 	//Íæ¼ÒÖÜÎ§NPCµÄID
-	CC_GET_SET_PRIVATE(int, SurroundPlayer, m_iSurroundPlayer);
-	CC_GET_PRIVATE(cPlayer*, Player, m_pPlayer);
-	CC_GET_PRIVATE(cEnemyRuler*, EnemyRuler, m_pEnemyRuler);
-	CC_GET_SET_PRIVATE(cMapData*, CurentMap, m_pCurentMap);
-	CC_GET_PRIVATE(cNPCRuler*, NPCRuler, m_pNPCRuler);
-	CC_GET_PRIVATE(cRoleSelectRuler*, RoleSelectRuler, m_pRoleSelectRuler);
-	CC_GET_PRIVATE(cStore*, Store, m_pStore);
-	CC_GET_PRIVATE(cFireRuler*, FireRuler, m_pFireRuler);
-	CC_GET_PRIVATE(cEnemy*, EnemyTemp, m_EnemyTemp);
-	//CC_GET_PRIVATE(cNodeRoleSelect*, NodeRoleSelect, m_pNodeRoleSelect);
+	GET_SET_PRIVATE(int, SurroundPlayer, m_iSurroundPlayer);
+	GET_PRIVATE(cPlayer*, Player, m_pPlayer);
+	GET_PRIVATE(cEnemyRuler*, EnemyRuler, m_pEnemyRuler);
+	GET_SET_PRIVATE(cMapData*, CurentMap, m_pCurentMap);
+	GET_PRIVATE(cNPCRuler*, NPCRuler, m_pNPCRuler);
+	GET_PRIVATE(cRoleSelectRuler*, RoleSelectRuler, m_pRoleSelectRuler);
+	GET_PRIVATE(cStore*, Store, m_pStore);
+	GET_PRIVATE(cFireRuler*, FireRuler, m_pFireRuler);
+	GET_PRIVATE(cEnemy*, EnemyTemp, m_EnemyTemp);
+	//GET_PRIVATE(cNodeRoleSelect*, NodeRoleSelect, m_pNodeRoleSelect);
 
 
 private:

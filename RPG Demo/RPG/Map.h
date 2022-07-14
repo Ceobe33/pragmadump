@@ -10,7 +10,7 @@ public:
 	static cMap* getInstance();
 	//interface
 	//CC_GETPRIVATE(int, ID, m_iID);
-	CC_GET_PRIVATE(vector<cMapData*>, VecMap, m_vecMap);
+	GET_PRIVATE(vector<cMapData*>, VecMap, m_vecMap);
 
 private:
 	cMap();

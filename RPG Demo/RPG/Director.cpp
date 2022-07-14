@@ -3,7 +3,8 @@
 #include "RoleSelect.h"
 
 cDirector* cDirector::m_pInstance = nullptr;
-cDirector::cDirector() {
+cDirector::cDirector()
+	:m_iPressingBuffer(0) {
 	m_pRunningScene = nullptr;
 }
 
@@ -18,7 +19,10 @@ cDirector* cDirector::getInstance() {
 }
 
 void cDirector::update() {
-	m_pRunningScene->update();
+	if (m_iPressingBuffer++ > eMoveBufferVal) {
+		m_iPressingBuffer = 0;
+		m_pRunningScene->update();
+	}
 }
 
 void cDirector::render() {
@@ -102,7 +106,6 @@ void cDirector::solveFrameProblem() {
 	cursorInfo.bVisible = 0;
 	// Êä³ö
 	SetConsoleCursorInfo(hOut, &cursorInfo);
-
 
 	//HANDLE hndl = GetStdHandle(STD_OUTPUT_HANDLE);
 	//CONSOLE_SCREEN_BUFFER_INFO csbi;

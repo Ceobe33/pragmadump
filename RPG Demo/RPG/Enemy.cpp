@@ -127,7 +127,7 @@ void cEnemyRuler::storage()
 cEnemy* cEnemyRuler::killed()
 {
 	cEnemy* pData = new cEnemy();
-	for (int i = 0; i < m_vecEnemy.size(); i++)
+	for (int i = 0; i < int(m_vecEnemy.size()); i++)
 	{
 		if (m_vecEnemy[i]->getHp() == 0)
 		{
