@@ -1,20 +1,23 @@
 ## RPG Demo
-This is my cpp project, though here has a lot of bugs :( . I'll look after and fix all of them! 
+This is my cpp project, though here has a lot of bugs :( but I'll look after and fix all of them! 
 - killing them all!!
 
-### about this
-After you download this project, you can click the RPG.sln to run with visual studio and whatever your gesture~
-this mind is the source of Arknights, Y? cause it's my favorate game.And my most like character's name is Coebe!
-Here, offered some role you can select(although all the same:P) ,and then use arrow keys to move the cursor and your character.
-
+### About this
+After you download this project, you can click the RPG.sln to run with visual studio and whatever your gesture~  
+This mind(thoughts) is the source of Arknights. Why? Because it's my favorate game.  
+And my most like character's name is Coebe!  
+Here, in the game, offered some role you can select(although all the same:P),  
+and then use arrow keys to move the cursor and your character.  
 (emm now.. is too late, I'll go to bed, good ni-night)
 
-Jul. 4, 2022
-And til today I had update half directory file format, and fix some little bug.
+
+Jul. 4, 2022  
+And til today I had update half directory file format, and fix some little bug.  
 I can feel it that is step by step turns better and better ^ ^
 
-Jul. 14, 2022
-After those days I had modified most of the project coding standard. Is it looks more better, right? (At least it is :D)
+
+Jul. 14, 2022  
+After those days I had modified most of the project coding standard. Is it looks more better, right? (At least it is :D)  
 And other function will keep completing. Come on!
 
 
