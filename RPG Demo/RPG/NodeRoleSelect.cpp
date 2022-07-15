@@ -4,12 +4,12 @@
 cNodeRoleSelect::cNodeRoleSelect() {
 	//m_strName = "RoleSelect";
 	nodeName = "NodeRoleSelect";
-	vector<cDataBase*> vecData = cDataRuler::getInstance()->getDataRuler("RoleSelectDataRuler")->getVecData();
-	for (cDataBase* pBase : vecData) {
+	vector<DataBase*> vecData = cDataRuler::getInstance()->getDataRuler("RoleSelectDataRuler")->getVecData();
+	for (DataBase* pBase : vecData) {
 		//cRoleSelect* pRole = new cRoleSelect();
 		cRoleSelectData* pData = static_cast<cRoleSelectData*>(pBase);
 		//pRole->initialize(pData);
-		m_vecPlayer.push_back(pData);
+		roleContainer.push_back(pData);
 	}
 }
 
@@ -18,15 +18,15 @@ cNodeRoleSelect::~cNodeRoleSelect() {
 
 void cNodeRoleSelect::update() {
 	if (KEY_DOWN(VK_DOWN)) {
-		m_iState++;
+		roleselArrowState++;
 	} else if (KEY_DOWN(VK_UP)) {
-		m_iState--;
+		roleselArrowState--;
 	}
 
-	if (m_iState < 0) {
-		m_iState = 0;
-	} else if (int(m_vecPlayer.size()) - 1 < m_iState) {
-		m_iState = m_vecPlayer.size() - 1;
+	if (roleselArrowState < 0) {
+		roleselArrowState = 0;
+	} else if (int(roleContainer.size()) - 1 < roleselArrowState) {
+		roleselArrowState = roleContainer.size() - 1;
 	} else if (KEY_DOWN(VK_RETURN))	{
 		//cDirector::getInstance()->pushScene(this);
 		//cDirector::getInstance()->replaceScene(new cSceneMain());//setState(1);
@@ -37,13 +37,13 @@ void cNodeRoleSelect::update() {
 
 void cNodeRoleSelect::render() {
 	cout << "\tName\t" << "Role\t\t" << "Atk\t" << "Def\t" << "Growth\t" << "Img\t" << endl;
-	for (int i = 0; i < int(m_vecPlayer.size()); i++) {
-		if (i == m_iState) {
+	for (int i = 0; i < int(roleContainer.size()); i++) {
+		if (i == roleselArrowState) {
 			cout << "->";
 		} else {
 			cout << "  ";
 		}
-		cRoleSelectData* role = m_vecPlayer[i];
+		cRoleSelectData* role = roleContainer[i];
 		cout
 			<< "\t"
 			<< role->m_strName << "\t"

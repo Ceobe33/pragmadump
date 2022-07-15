@@ -2,7 +2,7 @@
 #include "Equipment.h"
 
 cEquipment::cEquipment() 
-	:m_iState(0)
+	:arrowState(0)
 {
 	m_strName = "Equipment";
 }
@@ -16,7 +16,7 @@ void cEquipment::update() {
 		//cDirector::getInstance()->popScene();
 	} else if (KEY_DOWN(VK_RETURN)) {
 		for (int i = 0; i < equipmentContainerSize; i++) {
-			if (i == m_iState) {
+			if (i == arrowState) {
 				cGoodsData* pData = pSceneMain->getStore()->armament(m_vecEquipment[i]->iID);
 				pSceneMain->getPlayer()->getBag()->addGoods(pData);//
 
@@ -25,7 +25,7 @@ void cEquipment::update() {
 				if (m_vecEquipment[i]->iEquipmentCount > 0)
 					m_vecEquipment[i]->iEquipmentCount--;
 				if (m_vecEquipment[i]->iEquipmentCount == 0) {
-					m_iState = 0;
+					arrowState = 0;
 					m_vecEquipment.erase(m_vecEquipment.begin() + i);
 					system("cls");
 				}
@@ -33,11 +33,11 @@ void cEquipment::update() {
 			}
 		}
 	} else if (KEY_DOWN(VK_DOWN))	{
-		if (m_iState < equipmentContainerSize - 1)
-			m_iState++;
+		if (arrowState < equipmentContainerSize - 1)
+			arrowState++;
 	} else if (KEY_DOWN(VK_UP)) {
-		if (m_iState > 0)
-			m_iState--;
+		if (arrowState > 0)
+			arrowState--;
 	}
 }
 
@@ -50,7 +50,7 @@ void cEquipment::render() {
 		<< endl << "\tName\t\t" << "Atk\t" << "Count\t" << "Price\t" << "Details\t" << endl;
 
 	for (int i = 0; i < int(m_vecEquipment.size()); i++) {
-		if (i == m_iState)
+		if (i == arrowState)
 			cout << "-->\t";
 		else
 			cout << "   \t";

@@ -55,13 +55,13 @@ void cSceneMain::update() {
 				m_iMapID = 203;
 				m_pEnemyRuler = new cEnemyRuler();
 				//update();
-			}
-			else if (406 == m_iSurroundPlayer) {
+			} else if (406 == m_iSurroundPlayer) {
 				cPetStore* pPetStore = new cPetStore();
 				//pPetStore->init(m_iSurroundPlayer);
 				cDirector::getInstance()->pushScene(pPetStore);
-			}
-			else {
+				// 花里胡哨的加载界面
+				cDirector::getInstance()->pushScene(new cLoading());
+			} else {
 				cStore* pStore = new cStore();
 				pStore->initItems(m_iSurroundPlayer);
 				cDirector::getInstance()->pushScene(pStore);
@@ -137,9 +137,8 @@ bool cSceneMain::collide() {
 }
 
 void cSceneMain::render() {
-	int n = 0;
 	//if (KEY_DOWN(VK_ESCAPE))
-	//	m_pRoleSelect->render();
+	//	selectedRole->render();
 	for (int i = 0; i < m_pCurentMap->m_iRow; i++) {
 		for (int j = 0; j < m_pCurentMap->m_iCol; j++) {
 			int iTag = 0;
@@ -173,20 +172,16 @@ void cSceneMain::render() {
 					//if (j >= m_pCurentMap->m_iCol)
 					break;
 				}
-			}
-			else if (m_pEnemyRuler->render(i, j, m_iMapID)/*m_pCurentMap->m_arrMap[i][j] >= 500 && m_pCurentMap->m_arrMap[i][j] < 600*/) {
+			} else if (m_pEnemyRuler->render(i, j, m_iMapID)/*m_pCurentMap->m_arrMap[i][j] >= 500 && m_pCurentMap->m_arrMap[i][j] < 600*/) {
 				iTag = 2;
 				cout << m_pEnemyRuler->render(i, j, m_iMapID)->getImg();
-			}
-			else if (eWall == m_pCurentMap->m_arrMap[i][j]) {
+			} else if (eWall == m_pCurentMap->m_arrMap[i][j]) {
 				iTag = 3;
 				cout << "■";
-			}
-			else if (m_pCurentMap->m_arrMap[i][j] >= 400 && m_pCurentMap->m_arrMap[i][j] < 500) {
+			} else if (m_pCurentMap->m_arrMap[i][j] >= 400 && m_pCurentMap->m_arrMap[i][j] < 500) {
 				iTag = 4;
 				cout << m_pNPCRuler->getNPCByID(m_pCurentMap->m_arrMap[i][j])->getOccupation().substr(0, 2);
-			}
-			else if (m_pPlayer->scan(i, j)) {
+			} else if (m_pPlayer->scan(i, j)) {
 				iTag = 5;
 				if (m_pPlayer->getHurt()) {
 					//受伤颜色
@@ -195,38 +190,33 @@ void cSceneMain::render() {
 					cout << m_pPlayer->getImg();
 					//7 正常字体颜色
 					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
-				}
-				else {
+				} else {
 					cout << m_pPlayer->getImg();
 				}
-			}
-			else if (m_pPlayer->havePet && i == m_pPlayer->m_iPetRow && j == m_pPlayer->m_iPetCol) {
+			} else if (m_pPlayer->havePet && i == m_pPlayer->m_iPetRow && j == m_pPlayer->m_iPetCol) {
 				iTag = 6;
 				m_pPlayer->m_strPetImg;
-			}
-			else if (m_pPlayer->getFire()) {
+			} else if (m_pPlayer->getFire()) {
 				iTag = 7;
 				m_pPlayer->setFire(false);
-				m_pFireRuler->getFire()->render();
-			}
-			//scan 函数判断该位置是否有NPC
-			else if (m_pCurentMap->m_arrMap[i][j] >= 200 && m_pCurentMap->m_arrMap[i][j] < 300/*100 <= m_pCurentMap->m_arrMap[i][j]*/) {
+				m_pFireRuler->fireIns->render();
+
+				//scan 函数判断该位置是否有NPC
+			} else if (m_pCurentMap->m_arrMap[i][j] >= 200 && m_pCurentMap->m_arrMap[i][j] < 300/*100 <= m_pCurentMap->m_arrMap[i][j]*/) {
 				iTag = 8;
 				cout << "□";
-			}
-			else if (eAir == m_pCurentMap->m_arrMap[i][j]) {
+			} else if (eAir == m_pCurentMap->m_arrMap[i][j]) {
 				iTag = 9;
 				cout << "  ";
 			}
 			 // cout << iTag << "*";
-
-		}//内循环结束
+		}// in-loop end
 		cout << endl;
+	}// out-loop end
 
-	}
-	//玩家等级
+	// 玩家等级
 	cout << endl << "\t\t\t  "<< left <<setw(2)<< m_pPlayer->getLevel() << "(" << left << setw(3) << m_pPlayer->getEXP() << "/" << m_pPlayer->getEXPMax() << ")" << endl;
-	//玩家经验条
+	// 玩家经验条
 	m_pPlayer->experienceRender();
 	if (m_EnemyTemp &&/*203 == m_iMapID  &&*/m_EnemyTemp->death/*m_pEnemyRuler->getSingleEnemy(m_EnemyTemp->getID())->death*/) {
 		//m_pEnemyRuler->getSingleEnemy(m_EnemyTemp->getID())->death = false;
@@ -234,9 +224,8 @@ void cSceneMain::render() {
 		//传给玩家 杀死相应敌人获得的经验值
 		m_pPlayer->experience(pEnemyData->getEXPValue());
 		//删除敌人容器里的死亡敌人
-
 	}
-	//玩家各项属性
+	// 玩家各项属性
 	cout << "\tName\t" << "Role\t" << "Atk\t" << "Def\t" << "HP\t" << "Growth\t" << "Img\t" << "Acount\t" << endl;
 	cout
 		<< "\t"
@@ -249,10 +238,11 @@ void cSceneMain::render() {
 		<< m_pPlayer->getImg() << "\t"
 		<< m_pPlayer->getAcount() << "\t" << endl;
 	cout
-		<< m_iMapID << "\t" << n << endl
+		<< "mapID: " << m_iMapID << "\t" << endl
 		<< "player\trows\tcols\n\t"
 		<< m_pPlayer->getRow() << "\t" << m_pPlayer->getCol() << endl;
-	//敌人属性信息
-	if (m_EnemyTemp)
+	// 敌人属性信息
+	if (m_EnemyTemp) {
 		m_pEnemyRuler->render(m_EnemyTemp);
+	}
 }

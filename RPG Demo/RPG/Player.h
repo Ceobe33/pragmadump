@@ -1,3 +1,4 @@
+#pragma once
 #ifndef RPG_RPG_PLAYER_H_
 #define RPG_RPG_PLAYER_H_
 
@@ -5,8 +6,7 @@
 #include "Equipment.h"
 //#include "SceneMain.h"
 
-class cPlayer
-{
+class cPlayer {
 public:
 	cPlayer();
 	// 功能
@@ -30,6 +30,8 @@ public:
 	void petInit(cPetData* pData);
 	// 接口 interface
 	bool scan(int r,int c);
+
+
 	GET_PRIVATE(int, Row, m_iRow);
 	GET_PRIVATE(int, Col, m_iCol);
 	GET_PRIVATE(int, Atk, m_iAtk);
@@ -68,7 +70,7 @@ private:
 	//int m_iBackupRow, m_iBackupCol;
 	//cBag* m_pBag;
 
-	int m_iID,m_iState,m_iHPMax;
+	int m_iID,arrowState,m_iHPMax;
 	// player move cache, to prevent system to fluquent and player move too fast
 };
 

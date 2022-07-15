@@ -10,9 +10,9 @@ public:
 	cRoleSelect* getDataByID(const int &i);
 
 	//API
-	//GET_SET_PRIVATE(int, State, m_iState);
+	//GET_SET_PRIVATE(int, State, roleselArrowState);
 	//vector<cRoleSelectData*> getVecPlayer();
-	//GET_PRIVATE(vector<cRoleSelectData*>, VecPlayer, m_vecPlayer);
+	//GET_PRIVATE(vector<cRoleSelectData*>, VecPlayer, roleContainer);
 
 private:
 
@@ -21,10 +21,10 @@ private:
 	int m_iID{}, m_iAtk{}, m_iDef{}, m_iHP{}, m_iAcount{};
 
 	//static cRoleSelect* m_pInstanceRoleSelect;
-	//int m_iState;
+	//int roleselArrowState;
 	//int m_iID, m_iRow,m_iAtk,m_iDef;
 	//string m_strRole, m_strName, m_strGrowth, m_strImg;
-	//vector<cRoleSelectData*> m_vecPlayer;
+	//vector<cRoleSelectData*> roleContainer;
 };
 
 class cRoleSelectRuler :public cSceneBase {
@@ -35,10 +35,10 @@ public:
 	void render();
 	void storage();
 
-	GET_SET_PRIVATE(int, State, m_iState);
-	GET_SET_PRIVATE(vector<cRoleSelect*>, VecPlayer, m_vecPlayer);
-	GET_SET_PRIVATE(cRoleSelect*, RoleSelect, m_pRoleSelect);
+	int roleselArrowState{};
+	vector<cRoleSelect*> roleContainer;
+	cRoleSelect* selectedRole;
 private:
-	//cRoleSelect* m_pRoleSelect;
-	//vector<cRoleSelect*> m_vecPlayer;
+	//cRoleSelect* selectedRole;
+	//vector<cRoleSelect*> roleContainer;
 };

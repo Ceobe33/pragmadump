@@ -5,12 +5,12 @@ cMap* cMap::m_pInstanceMap = nullptr;
 cMap::cMap()
 {
 	//从地图管理者获取地图容器
-	vector<cDataBase*> vec = cDataRuler::getInstance()->getDataRuler("MapDataRuler")->getVecData();
-	for (cDataBase* mapData : vec)
+	vector<DataBase*> vec = cDataRuler::getInstance()->getDataRuler("MapDataRuler")->getVecData();
+	for (DataBase* mapData : vec)
 	{
 		//cMap* map = new cMap();
-		//从 cDataBase* 类型转换为 cMapData* 类型
-		cMapData* pData = static_cast<cMapData*>(mapData);
+		//从 DataBase* 类型转换为 MapData* 类型
+		MapData* pData = static_cast<MapData*>(mapData);
 		//map->initialize(pData);
 		//storage
 		m_vecMap.push_back(pData);
@@ -22,10 +22,10 @@ cMap::~cMap()
 {
 }
 //传入玩家的行列
-cMapData* cMap::getMapByID(const int &mapID)
+MapData* cMap::getMapByID(const int &mapID)
 {
 	//遍历地图的容器
-	for (cMapData* mapData: m_vecMap)
+	for (MapData* mapData: m_vecMap)
 	{
 		if (mapData->iID == mapID)
 		{
@@ -45,7 +45,7 @@ cMap* cMap::getInstance()
 	return m_pInstanceMap;
 }
 
-//void cMap::initialize(cMapData* data)
+//void cMap::initialize(MapData* data)
 //{
 //	m_iID = data->iID;
 //	m_iRow = data->m_iRow;
@@ -56,11 +56,11 @@ cMap* cMap::getInstance()
 
 //cMapRuler::cMapRuler()
 //{
-//	vector<cDataBase*> vec = cDataRuler::getInstance()->getDataRuler("MapDataRuler")->getDataVector();
-//	for (cDataBase* mapData : vec)
+//	vector<DataBase*> vec = cDataRuler::getInstance()->getDataRuler("MapDataRuler")->getDataVector();
+//	for (DataBase* mapData : vec)
 //	{
 //		cMap* map = new cMap();
-//		cMapData* pData = static_cast<cMapData*>(mapData);
+//		MapData* pData = static_cast<MapData*>(mapData);
 //		map->initialize(pData);
 //		m_vecMap.push_back(map);
 //	}

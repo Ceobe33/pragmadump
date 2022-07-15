@@ -17,30 +17,28 @@ cDataRuler::cDataRuler() {
 }
 
 void cDataRuler::addDataRuler(string dataRulerName, cDataBaseRuler* dataRuler) {
-	//子类指针 传到这里自动转化为父类指针
+	// child pointer 传到这里自动转化为父类指针
 	assert(!dataRulerName.empty() && dataRuler != nullptr);
 
 	m_mapDataRuler[dataRulerName] = dataRuler;
 }
 
-//通过存储在map容器的DataRuler的名字获取相应管理者指针
+// 通过存储在map容器的DataRuler的名字获取相应管理者指针
 cDataBaseRuler* cDataRuler::getDataRuler(string dataRulerName) {
-	//for(map<string,cDataBaseRuler*>::iterator it = dataRuler.begin(); it!=)
-	if (dataRulerName.empty()) {
+	if (dataRulerName.empty() || m_mapDataRuler.find(dataRulerName) == m_mapDataRuler.end()) {
 		return nullptr;
 	}
 	return m_mapDataRuler[dataRulerName];
 }
 
 cDataRuler* cDataRuler::getInstance() {
-	//只需要 new 一次
+	// 只需要 new 一次
 	if (!m_pInstance) {
 		m_pInstance = new cDataRuler();
 	}
 	return m_pInstance;
 }
-//
-//map<string, cDataBaseRuler*> cDataRuler::getMapDataRuler()
-//{
-//	return m_mapDataRuler;
-//}
+
+map<string, cDataBaseRuler*> cDataRuler::getMapDataRuler() {
+	return m_mapDataRuler;
+}

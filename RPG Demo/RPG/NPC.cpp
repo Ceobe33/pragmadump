@@ -66,11 +66,11 @@ cNPCRuler::cNPCRuler()
 void cNPCRuler::storage()
 {
 	//获取存储NPC数据的容器
-	vector<cDataBase*> vecNPCData = cDataRuler::getInstance()->getDataRuler("NPCDataRuler")->getVecData();
-	for (cDataBase* pNPC : vecNPCData)
+	vector<DataBase*> vecNPCData = cDataRuler::getInstance()->getDataRuler("NPCDataRuler")->getVecData();
+	for (DataBase* pNPC : vecNPCData)
 	{
 		cNPC* pNpc = new cNPC();
-		//将父类的 cDataBase* 型转换为 cNPCData* 型
+		//将父类的 DataBase* 型转换为 cNPCData* 型
 		cNPCData* pData = static_cast<cNPCData*>(pNPC);
 		//将NPC数据文件初始化
 		pNpc->initialize(pData);

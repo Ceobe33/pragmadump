@@ -3,9 +3,9 @@
 
 
 cFire::cFire() {
-	m_iTag = eNone;
+	fireTag = eNone;
 	m_iDirection = eNone;
-	m_iDistance = 0;
+	fireDistance = 0;
 }
 
 
@@ -28,15 +28,15 @@ void cFire::update() {
 		break;
 	}
 	//for(cFire* pData:m_)
-	m_iDistance = 3 <= abs(m_iBackupRow - m_iRow) || 3 <= abs(m_iBackupCol - m_iCol);
-	//if (m_iDistance)
+	fireDistance = 3 <= abs(m_iBackupRow - m_iRow) || 3 <= abs(m_iBackupCol - m_iCol);
+	//if (fireDistance)
 	//{
 
 	//}
 }
 
 void cFire::render() {
-	switch (m_iTag)	{
+	switch (fireTag)	{
 	case ePlayer:
 		cout << "µ¶";
 		break;
@@ -49,26 +49,26 @@ void cFire::render() {
 }
 
 void cFire::setPosition(const int &r, const int &c, const int &direction, const int &tag) {
-	m_iRow = r, m_iCol = c, m_iDirection = direction, m_iTag = tag;
+	m_iRow = r, m_iCol = c, m_iDirection = direction, fireTag = tag;
 	m_iBackupRow = r, m_iBackupCol = c;
 }
 
 
 cFireRuler::cFireRuler() {
-	m_pFire = new cFire();
+	fireIns = new cFire();
 }
 
 cFireRuler::~cFireRuler() {
 }
 
 void cFireRuler::load(const int & i, const int &j, const int &dir,const int &tag) {
-	m_pFire->setPosition(i, j,dir,tag);
-	m_vecFire.push_back(m_pFire);
+	fireIns->setPosition(i, j,dir,tag);
+	m_vecFire.push_back(fireIns);
 }
 
 void cFireRuler::update() {
 	for (int i = 0; i < int(m_vecFire.size()); i++) {
-		if (m_pFire->getDistance()) {
+		if (fireIns->fireDistance) {
 			m_vecFire.erase(m_vecFire.begin() + i);
 		}
 	}

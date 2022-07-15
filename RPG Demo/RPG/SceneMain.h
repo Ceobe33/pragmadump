@@ -32,7 +32,7 @@ public:
 	GET_SET_PRIVATE(int, SurroundPlayer, m_iSurroundPlayer);
 	GET_PRIVATE(cPlayer*, Player, m_pPlayer);
 	GET_PRIVATE(cEnemyRuler*, EnemyRuler, m_pEnemyRuler);
-	GET_SET_PRIVATE(cMapData*, CurentMap, m_pCurentMap);
+	GET_SET_PRIVATE(MapData*, CurentMap, m_pCurentMap);
 	GET_PRIVATE(cNPCRuler*, NPCRuler, m_pNPCRuler);
 	GET_PRIVATE(cRoleSelectRuler*, RoleSelectRuler, m_pRoleSelectRuler);
 	GET_PRIVATE(cStore*, Store, m_pStore);
@@ -46,14 +46,14 @@ private:
 	bool m_bSurroundNPC;
 	bool m_bTrainning, m_bEnemyPropertyRender;
 	cEnemy* pEnemyData;
-	//cFire* m_pFire;
+	//cFire* fireIns;
 	//int m_iSurroundPlayer;
 	
 	//cStore* m_pStore;
 	//static cSceneMain* m_pInstanceSceneMain;
 	/*int m_iMapID;
 	cPlayer* m_player;
-	cMapData* m_curentMap;
+	MapData* m_curentMap;
 	vector<cRoleSelect*> m_vecRoleSelect;
 	vector<cNPC*> m_vecNPC;*/
 };

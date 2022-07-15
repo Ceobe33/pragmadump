@@ -9,7 +9,7 @@ cPlayer::cPlayer() {
 	m_iBackupTrainRow = 0, m_iBackupTrainCol = 0;
 	m_pBag = new cBag();
 	m_pEquipment = new cEquipment();
-	m_iState = 0;
+	arrowState = 0;
 	m_iLevel = 0;
 	m_bHurt = false;
 	m_bFire = false;
@@ -62,7 +62,7 @@ void cPlayer::update() {
 	}
 	//角色移动后重新设定位置
 	setPosition(m_iRow, m_iCol);
-	pCurentScene->getFireRuler()->getFire()->update();
+	pCurentScene->getFireRuler()->fireIns->update();
 	//equipmentBonus();
 }
 

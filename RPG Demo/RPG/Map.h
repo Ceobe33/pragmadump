@@ -4,20 +4,20 @@
 class cMap {
 public:
 	~cMap();
-	//void initialize(cMapData* data);
+	//void initialize(MapData* data);
 
-	cMapData* getMapByID(const int &mapID);
+	MapData* getMapByID(const int &mapID);
 	static cMap* getInstance();
 	//interface
 	//CC_GETPRIVATE(int, ID, m_iID);
-	GET_PRIVATE(vector<cMapData*>, VecMap, m_vecMap);
+	GET_PRIVATE(vector<MapData*>, VecMap, m_vecMap);
 
 private:
 	cMap();
 	static cMap* m_pInstanceMap;
 	//int m_iID, m_iRow, m_iCol, m_iPlayerRow, m_iPlayerCol;
 
-	//vector<cMapData*> m_vecMap;
+	//vector<MapData*> m_vecMap;
 
 };
 

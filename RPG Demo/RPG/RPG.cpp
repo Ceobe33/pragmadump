@@ -17,7 +17,9 @@
 //战斗界面退出后重置
 //丢弃装备？ experienceMax 升级后加10  角色各项属性增加
 
+// TODO enemy 处的 bug 怎么改
 // TODO : besure all the key operator under the director control
+// TODO : amend the short key of comment, auto plus space after "//"
 // 
 // aobut expression
 // TODO : delay character be damaged color time
@@ -38,7 +40,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 	SetConsoleTitle(L"RPG Game");//修改控制台名字  方法一
 	//system("title sokoban1");	//修改控制台名字  方法二
 
-	cLoad();
+	cLoad::cLoad();
 	cDirector::getInstance()->replaceScene(new cMenu());
 	cDirector::getInstance()->runGame();
 

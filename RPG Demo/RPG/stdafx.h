@@ -51,9 +51,8 @@ using namespace std;
 
 // 得到游戏场景的指针
 // 这两种分别在什么场景下使用，作用是什么
-// TODO enemy 处的 bug 怎么改
-#define GET_pCURENTSCENE cSceneMain* pCurentScene =static_cast<cSceneMain*>(cDirector::getInstance()->getScene())
-#define GET_pSCENEMAIN cSceneMain* pSceneMain =static_cast<cSceneMain*>(cDirector::getInstance()->getScene("Game"))
+#define GET_pCURENTSCENE cSceneMain* pCurentScene = static_cast<cSceneMain*>(cDirector::getInstance()->getScene())
+#define GET_pSCENEMAIN cSceneMain* pSceneMain = static_cast<cSceneMain*>(cDirector::getInstance()->getScene("Game"))
 
 enum {
 	eAir,

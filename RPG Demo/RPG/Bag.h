@@ -17,7 +17,7 @@ public:
 	void deleteGoods(string name);
 
 private:
-	int m_iState;
+	int bagArrowState;
 	vector<cGoodsData*> m_vecBag;
 };
 

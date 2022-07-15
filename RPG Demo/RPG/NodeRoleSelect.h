@@ -1,15 +1,18 @@
 #pragma once
+#ifndef RPG_RPG_NODEROLESELECT_H_
+#define RPG_RPG_NODEROLESELECT_H_
+
 #include "Node.h"
 
-class cNodeRoleSelect:public cNode
-{
+class cNodeRoleSelect :public cNode {
 public:
 	cNodeRoleSelect();
 	~cNodeRoleSelect();
 	void update();
-	void render();	
-	GET_SET_PRIVATE(int, State, m_iState);
+	void render();
+	int roleselArrowState{};
 	//vector<cRoleSelectData*> getVecPlayer();
-	GET_PRIVATE(vector<cRoleSelectData*>, VecPlayer, m_vecPlayer);
+	GET_PRIVATE(vector<cRoleSelectData*>, VecPlayer, roleContainer);
 };
 
+#endif // !RPG_RPG_NODEROLESELECT_H_

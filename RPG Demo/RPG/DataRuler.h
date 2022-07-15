@@ -5,15 +5,14 @@
 #include "DataStruct.h"
 #include "DataBase.h"
 
-class cDataRuler
-{
+class cDataRuler {
 public:
 
 	void addDataRuler(string dataRulerName, cDataBaseRuler* dataRuler);
 	cDataBaseRuler* getDataRuler(string dataRulerName);
 
 	//GET_PRIVATE(map<string, cDataBaseRuler*>, MapDataRuler, m_mapDataRuler);
-	//map<string, cDataBaseRuler*> getMapDataRuler();
+	map<string, cDataBaseRuler*> getMapDataRuler();
 	//µ¥ÀýÄ£Ê½
 	static cDataRuler* getInstance();
 private:

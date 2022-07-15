@@ -22,12 +22,9 @@ void cRoleSelectDataRuler::load() {
 	}
 }
 //
-//cMapData* cMapDataRuler::getMapById(int mapID)
-//{
-//	for (int i = 0; i < m_vecMap.size(); i++)
-//	{
-//		if (m_vecMap[i]->m_mapID == mapID)
-//		{
+//MapData* cMapDataRuler::getMapById(int mapID) {
+//	for (int i = 0; i < m_vecMap.size(); i++) {
+//		if (m_vecMap[i]->m_mapID == mapID) {
 //			return m_vecMap[i];
 //		}
 //	}
@@ -41,14 +38,12 @@ void cMapDataRuler::load() {
 		int mapAmount;
 		loadFile >> mapAmount;
 		for (int i = 0; i < mapAmount; i++) {
-			cMapData* data = new cMapData();
+			MapData* data = new MapData();
 			loadFile >> data->iID >> data->m_iRow >> data->m_iCol >> data->m_iPlayerRow >> data->m_iPlayerCol;
 			for (int p = 0; p < data->m_iRow; p++) {
 				for (int q = 0; q < data->m_iCol; q++) {
 					loadFile >> data->m_arrMap[p][q];
-					/*if (m_arrMap[p][q] >= 500 && m_arrMap[p][q] < 600)
-					{
-
+					/*if (m_arrMap[p][q] >= 500 && m_arrMap[p][q] < 600) {
 					}*/
 				}
 			}
@@ -101,8 +96,8 @@ void cEnemyDataRuler::load() {
 		for (int i = 0; i < iRowAmount; i++) {
 			cEnemyData* data = new cEnemyData();
 			loadFile
-				>> data->iID >> data->strName >>data->iRow >> data->iCol >> data->iAtk >> data->iDef >> data->iHp>> data->strImg
-				/*>> data->iRow >> data->iCol*/ >> data->iCurentMapID >>data->iEXPValue;
+				>> data->iID >> data->strName >> data->iRow >> data->iCol >> data->iAtk >> data->iDef >> data->iHp>> data->strImg
+				/*>> data->iRow >> data->iCol*/ >> data->iCurentMapID >> data->iEXPValue;
 			m_vecDataBase.push_back(data);
 		}
 	}
@@ -118,13 +113,13 @@ void cPetDataRuler::load() {
 		for (int i = 0; i < iRowAmount; i++) {
 			cPetData* data = new cPetData();
 			loadFile
-				>> data->iID >> data->strName >> data->iRow >> data->iCol >> data->strImg >>data->iGain ;
+				>> data->iID >> data->strName >> data->iRow >> data->iCol >> data->strImg >> data->iGain;
 			m_vecDataBase.push_back(data);
 		}
 	}
 }
 
-//代理类,用来下载数据 整个游戏只需要运行一次
+// proxy class, to load the game data. Only running once at the game beginning
 cLoad::cLoad() {
 	cMapDataRuler* pMapDataRuler = new cMapDataRuler();
 	pMapDataRuler->load();

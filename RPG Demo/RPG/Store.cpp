@@ -6,7 +6,7 @@
 //cStore* cStore::m_pInstance = nullptr;
 cStore::cStore() {
 	m_strName = "Store";
-	m_iState = 0;
+	arrowState = 0;
 	m_pPlayer = new cPlayer();
 	//初始化商品数据
 	initialize();
@@ -28,13 +28,13 @@ void cStore::update() {
 	//GET_pCURENTSCENE;
 	GET_pSCENEMAIN;
 	if (KEY_DOWN(VK_DOWN)) {
-		m_iState++;
+		arrowState++;
 	} else if (KEY_DOWN(VK_UP))	{
-		m_iState--;
+		arrowState--;
 	} else if (KEY_DOWN(VK_ESCAPE))	{
 		cDirector::getInstance()->popScene();
 	} else if (KEY_DOWN(VK_RETURN))	{
-		cGoodsData* pData = m_vecItems[m_iState];
+		cGoodsData* pData = m_vecItems[arrowState];
 		if (pData->iAmount != 0) {
 			cEmitter::getInstance()->emitNews("buyGoods",pData);
 			//pSceneMain->getPlayer()->buyGoods(pData);
@@ -42,10 +42,10 @@ void cStore::update() {
 		//sellGoods();
 	}
 	int itemVecSize = int(m_vecItems.size());
-	if (m_iState < 0) {
-		m_iState = 0;
-	} else if (m_iState >= itemVecSize) {
-		m_iState = itemVecSize - 1;
+	if (arrowState < 0) {
+		arrowState = 0;
+	} else if (arrowState >= itemVecSize) {
+		arrowState = itemVecSize - 1;
 	}
 }
 
@@ -61,7 +61,7 @@ void cStore::render() {
 	for (int i = 0; i < int(m_vecItems.size()); i++)	{
 		cGoodsData* pData = m_vecItems[i];
 
-		if (m_iState == i)
+		if (arrowState == i)
 			cout << "-->";
 		else
 			cout << "   ";
@@ -94,8 +94,8 @@ void cStore::render() {
 
 //初始化
 void cStore::initialize() {
-	vector<cDataBase*> vec = cDataRuler::getInstance()->getDataRuler("GoodsDataRuler")->getVecData();
-	for (cDataBase* pData : vec) {
+	vector<DataBase*> vec = cDataRuler::getInstance()->getDataRuler("GoodsDataRuler")->getVecData();
+	for (DataBase* pData : vec) {
 		cGoodsData* tempGoods = static_cast<cGoodsData*>(pData);
 		m_vecGoods.push_back(tempGoods);
 	}
@@ -131,7 +131,7 @@ cGoodsData* cStore::armament(const int& i) {
 //{
 //	for (cGoodsData* pData : m_vecGoods)
 //	{
-//		if (pData->iID == m_iState+300)
+//		if (pData->iID == arrowState+300)
 //		{
 //			if (0 >= pData->iAmount)
 //				return;

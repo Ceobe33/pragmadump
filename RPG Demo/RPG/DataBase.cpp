@@ -18,15 +18,15 @@ cDataBaseRuler* cDataBaseRuler::getInstance() {
 	return m_pInstanceDataBaseRuler;
 }
 
-cDataBase* cDataBaseRuler::getDataByID(const int& iID) {
-	for (cDataBase* pData : m_vecDataBase) {
+DataBase* cDataBaseRuler::getDataByID(const int& iID) {
+	for (DataBase* pData : m_vecDataBase) {
 		if (pData->iID == iID)
 			return pData;
 	}
 	return nullptr;
 }
 
-vector<cDataBase*> cDataBaseRuler::getVecData() {
+vector<DataBase*> cDataBaseRuler::getVecData() {
 	//for (map<string, cDataBaseRuler*>::iterator iter = cDataRuler::getMapDataRuler().begin();)
 	return m_vecDataBase;
 }

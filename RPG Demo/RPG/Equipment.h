@@ -15,6 +15,6 @@ public:
 
 private:
 	vector<cGoodsData*> m_vecEquipment;
-	int m_iState;
+	int arrowState;
 };
 

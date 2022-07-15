@@ -42,7 +42,7 @@ void cEnemy::initialize(cEnemyData* enemy)
 		m_iCol = enemy->iCol,
 		m_iAtk = enemy->iAtk,
 		m_iDef = enemy->iDef,
-		m_iHp = enemy->iHp,
+		hp = enemy->iHp,
 		m_iCurentMapID = enemy->iCurentMapID,
 		m_iEXPValue = enemy->iEXPValue,
 		m_strName = enemy->strName,
@@ -72,13 +72,13 @@ void cEnemyRuler::render(cEnemy* enemy)
 				<< enemy->getName() << "\t"
 				<< enemy->getAtk() << "\t"
 				<< enemy->getDef() << "\t"
-				<< enemy->getHp() << "\t"
+				<< enemy->hp << "\t"
 				<< enemy->getImg() << "\t"
 				<< enemy->getEXPValue()
 				<< endl;
-			enemy->setHp(enemy->getHp()- 100);
-			if (enemy->getHp() < 0)
-				enemy->setHp(0);
+			enemy->hp = enemy->hp - 100;
+			if (enemy->hp < 0)
+				enemy->hp = 0;
 		}
 	}
 }
@@ -111,9 +111,9 @@ cEnemy* cEnemyRuler::getSingleEnemy(const int& enemyID)
 
 void cEnemyRuler::storage()
 {
-	//获取map容器里的vector<cDataBase*>
-	vector<cDataBase*> vec = cDataRuler::getInstance()->getDataRuler("EnemyDataRuler")->getVecData();
-	for (cDataBase* pData : vec)
+	//获取map容器里的vector<DataBase*>
+	vector<DataBase*> vec = cDataRuler::getInstance()->getDataRuler("EnemyDataRuler")->getVecData();
+	for (DataBase* pData : vec)
 	{
 		cEnemy* enemyData = new cEnemy();
 		//将cDataBase*类型的数据转换为cEnemy*类型
@@ -129,7 +129,7 @@ cEnemy* cEnemyRuler::killed()
 	cEnemy* pData = new cEnemy();
 	for (int i = 0; i < int(m_vecEnemy.size()); i++)
 	{
-		if (m_vecEnemy[i]->getHp() == 0)
+		if (m_vecEnemy[i]->hp == 0)
 		{
 			pData = m_vecEnemy[i];
 			m_vecEnemy.erase(m_vecEnemy.begin() + i);

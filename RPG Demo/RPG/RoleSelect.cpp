@@ -31,7 +31,7 @@ void cRoleSelect::render(cRoleSelect* role) {
 
 cRoleSelect* cRoleSelect::getDataByID(const int &i) {
 	GET_pSCENEMAIN;
-	for (cRoleSelect* pData : pSceneMain->getRoleSelectRuler()->getVecPlayer())	{
+	for (cRoleSelect* pData : pSceneMain->getRoleSelectRuler()->roleContainer)	{
 		if (pData->m_iID == i) {
 			return pData;
 		}
@@ -41,8 +41,8 @@ cRoleSelect* cRoleSelect::getDataByID(const int &i) {
 
 cRoleSelectRuler::cRoleSelectRuler() {
 	m_strName = "RoleSelectRuler";
-	m_iState = 0;
-	m_pRoleSelect = new cRoleSelect();
+	roleselArrowState = 0;
+	selectedRole = new cRoleSelect();
 	//将数据文件存储
 	storage();
 }
@@ -50,23 +50,23 @@ cRoleSelectRuler::cRoleSelectRuler() {
 void cRoleSelectRuler::update() {
 	Sleep(70);
 	if (KEY_DOWN(VK_DOWN)) {
-		m_iState++;
+		roleselArrowState++;
 	} else if (KEY_DOWN(VK_UP)) {
-		m_iState--;
+		roleselArrowState--;
 	}
 
-	int playerVecSize = int(m_vecPlayer.size());
-	if (0 > m_iState) {
-		m_iState = 0;
-	} else if (playerVecSize - 1 < m_iState) {
-		m_iState = playerVecSize - 1;
+	int playerVecSize = int(roleContainer.size());
+	if (0 > roleselArrowState) {
+		roleselArrowState = 0;
+	} else if (playerVecSize - 1 < roleselArrowState) {
+		roleselArrowState = playerVecSize - 1;
 	} else if (KEY_DOWN(VK_RETURN))	{
 		//获取选角色的数据
-		cRoleSelectData* pData = static_cast<cRoleSelectData*>(cDataRuler::getInstance()->getDataRuler("RoleSelectDataRuler")->getDataByID(m_iState + 100));
+		cRoleSelectData* pData = static_cast<cRoleSelectData*>(cDataRuler::getInstance()->getDataRuler("RoleSelectDataRuler")->getDataByID(roleselArrowState + 100));
 		cSceneMain* pGameScene = new cSceneMain();
 		pGameScene->getPlayer()->initialize(pData);
 		cDirector::getInstance()->pushScene(pGameScene);
-		//cEmitter::getInstance()->registerNews("curentPlayer", bind(&cRoleSelect::getVecPlayer()[m_iState], this, placeholders::_1));
+		//cEmitter::getInstance()->registerNews("curentPlayer", bind(&cRoleSelect::getVecPlayer()[roleselArrowState], this, placeholders::_1));
 	} else if (KEY_DOWN(VK_ESCAPE))	{
 		cDirector::getInstance()->popScene();
 	}
@@ -74,22 +74,22 @@ void cRoleSelectRuler::update() {
 
 void cRoleSelectRuler::render() {
 	cout << "\tName\t" << left << setw(10) << "Role" << "Atk\t" << "Def\t" << "Growth\t" << "Img\t" << "Acount\t" << endl;
-	for (int i = 0; i < int(m_vecPlayer.size()); i++) {
-		if (i == m_iState) {
+	for (int i = 0; i < int(roleContainer.size()); i++) {
+		if (i == roleselArrowState) {
 			cout << "-->";
 		} else {
 			cout << "   ";
 		}
-		m_pRoleSelect->render(m_vecPlayer[i]);
+		selectedRole->render(roleContainer[i]);
 	}
 }
 
 void cRoleSelectRuler::storage() {
-	vector<cDataBase*> vecData = cDataRuler::getInstance()->getDataRuler("RoleSelectDataRuler")->getVecData();
-	for (cDataBase* pBase : vecData) {
+	vector<DataBase*> vecData = cDataRuler::getInstance()->getDataRuler("RoleSelectDataRuler")->getVecData();
+	for (DataBase* pBase : vecData) {
 		cRoleSelect* pRole = new cRoleSelect();
 		cRoleSelectData* pData = static_cast<cRoleSelectData*>(pBase);
 		pRole->initialize(pData);
-		m_vecPlayer.push_back(pRole);
+		roleContainer.push_back(pRole);
 	}
 }

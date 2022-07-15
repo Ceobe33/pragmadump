@@ -3,7 +3,7 @@
 #include "stdafx.h"
 
 cBag::cBag()
-	:m_iState(0) 
+	:bagArrowState(0) 
 {
 	m_strName = "Bag";
 }
@@ -13,14 +13,14 @@ void cBag::update() {
 	if (KEY_DOWN(VK_ESCAPE)) {
 		cDirector::getInstance()->popScene();
 	} else if (KEY_DOWN(VK_DOWN)) {
-		if (m_iState < bagSize - 1)
-			m_iState++;
+		if (bagArrowState < bagSize - 1)
+			bagArrowState++;
 	} else if (KEY_DOWN(VK_UP))	{
-		if (m_iState > 0)
-			m_iState--;
+		if (bagArrowState > 0)
+			bagArrowState--;
 	} else if (KEY_DOWN(VK_RETURN))	{
 		for (int i = 0; i < bagSize; i++) {
-			if (i == m_iState) {
+			if (i == bagArrowState) {
 				//GET_pCURENTSCENE;
 				GET_pSCENEMAIN;
 				//传相应装备ID给store 来装备到物品容器
@@ -43,7 +43,7 @@ void cBag::update() {
 				if (m_vecBag[i]->iBagCount <= 0) {
 					deleteGoods(m_vecBag[i]->strName);
 					//m_vecBag.erase(m_vecBag.begin() + i);
-					m_iState = 0;
+					bagArrowState = 0;
 					system("cls");
 				}
 				break;
@@ -61,7 +61,7 @@ void cBag::render() {
 	cout << endl << endl << "		It is " << pSceneMain->getPlayer()->getName() << "'s bag."
 		<< endl << "\tName\t\t" << "Atk\t" << "Heal\t" << "Count\t" << "Price\t" << "Details\t" << endl;
 	for (int i = 0; i < int(m_vecBag.size()); i++) {
-		if (i == m_iState)
+		if (i == bagArrowState)
 			cout << "-->\t";
 		else
 			cout << "   \t";
@@ -79,7 +79,7 @@ void cBag::render() {
 	cout << endl << endl << "		It is " << m_strName << "'s equipment."
 		<< endl << "\tName\t\t" << "Atk\t" << "Count\t" << "Price\t" << "Details\t" << endl;
 	int equipmentContainerSize = int(pSceneMain->getPlayer()->getEquipment()->getVecEquipment().size());
-	for (int i = 0; i < equipmentContainerSize; i++)	{
+	for (int i = 0; i < equipmentContainerSize; i++) {
 		cout << "\t";
 		cGoodsData* pData = pSceneMain->getPlayer()->getEquipment()->getVecEquipment()[i];
 		cout

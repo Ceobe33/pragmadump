@@ -1,3 +1,4 @@
+#pragma once
 #ifndef RPG_RPG_PETSTORE_H_
 #define RPG_RPG_PETSTORE_H_
 
@@ -8,6 +9,7 @@ class cPetStore :public cSceneBase {
 public:
 	cPetStore();
 	~cPetStore();
+
 	void update();
 	void render();
 	void storage();
@@ -24,8 +26,8 @@ public:
 	string	strName, strImg;
 private:
 	//static cStore* m_pInstance;
-	int m_iState;
-	vector<cPetStore*> m_vecPets;
+	int arrowState;
+	vector<cPetData*> m_vecPets;
 };
 
 #endif // !RPG_RPG_PETSTORE_H_
