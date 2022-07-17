@@ -49,6 +49,7 @@ rm -rf xxx.swp	// remove the file which is insert name
 `/words` then press `enter` at the meantime press `n` go to the next match
 in other words press `N` to reverse the matching
 
+
 ### deleting
 - Use `dw` to detele word, the cursor position is important.
 If the cusor is in the middle of word, there will delete the cursor to word end.
