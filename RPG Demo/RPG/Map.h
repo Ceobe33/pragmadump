@@ -1,3 +1,4 @@
+#pragma once
 #ifndef RPG_RPG_MAP_H_
 #define RPG_RPG_MAP_H_
 

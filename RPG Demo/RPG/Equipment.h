@@ -1,4 +1,6 @@
 #pragma once
+#ifndef RPG_RPG_EQUIPMENT_H_
+#define RPG_RPG_EQUIPMENT_H_
 
 class cEquipment:public cSceneBase
 {
@@ -18,3 +20,4 @@ private:
 	int arrowState;
 };
 
+#endif // !RPG_RPG_EQUIPMENT_H_

@@ -1,3 +1,4 @@
+#pragma once
 #ifndef RPG_RPG_DIRECTOR_H_
 #define RPG_RPG_DIRECTOR_H_
 
