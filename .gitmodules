@@ -1,0 +1,3 @@
+[submodule "ThirdPart/vimwidget"]
+	path = ThirdPart/vimwidget
+	url = git@github.com:Coebe/vimwidget.git
