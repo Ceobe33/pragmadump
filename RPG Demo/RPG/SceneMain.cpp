@@ -134,7 +134,7 @@ bool cSceneMain::collide() {
 
 void cSceneMain::render() {
     //if (KEY_DOWN(VK_ESCAPE))
-    //	selectedRole->render();
+    //    selectedRole->render();
     for (int i = 0; i < m_pCurentMap->m_iRow; i++) {
         for (int j = 0; j < m_pCurentMap->m_iCol; j++) {
             int iTag = 0;

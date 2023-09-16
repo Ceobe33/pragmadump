@@ -45,7 +45,7 @@ void cEquipment::render() {
     //玩家属性显示
     pSceneMain->getPlayer()->propertyRender();
     //装备显示
-    cout << endl << endl << "		It is " << m_strName << "'s equipment."
+    cout << endl << endl << "        It is " << m_strName << "'s equipment."
         << endl << "\tName\t\t" << "Atk\t" << "Count\t" << "Price\t" << "Details\t" << endl;
 
     for (int i = 0; i < int(m_vecEquipment.size()); i++) {

@@ -14,16 +14,16 @@ void cNPC::update() {
 //
 //cNPC* cNPC::render(const int& r, const int& c, const int& i)
 //{
-//	GET_pCURENTSCENE;
-//	//将容器内每个元素依次赋值给 pNPC  //遍历
-//	for (cNPC* pNPC : pCurentScene->getNPCRuler()->getVecNPC())
-//	{
-//		if (pNPC->m_iRow == r && pNPC->m_iCol == c && pNPC->m_iCurentMapID == i)
-//		{
-//			return pNPC;
-//		}
-//	}
-//	return nullptr;
+//    GET_pCURENTSCENE;
+//    //将容器内每个元素依次赋值给 pNPC  //遍历
+//    for (cNPC* pNPC : pCurentScene->getNPCRuler()->getVecNPC())
+//    {
+//        if (pNPC->m_iRow == r && pNPC->m_iCol == c && pNPC->m_iCurentMapID == i)
+//        {
+//            return pNPC;
+//        }
+//    }
+//    return nullptr;
 //}
 void cNPC::initialize(cNPCData* data) {
     m_iID = data->iID;
@@ -81,13 +81,13 @@ cNPC* cNPCRuler::render(const int& r, const int& c, const int& i) {
 //
 //cNPCData* cNPC::dialogue(const int& r)
 //{
-//	//将容器内每个元素依次赋值给 pNPC  //遍历
-//	for (cNPCData* pNPC : m_vecNPC)
-//	{
-//		if (pNPC->iID == r)
-//		{
-//			return pNPC;
-//		}
-//	}
-//	return nullptr;
+//    //将容器内每个元素依次赋值给 pNPC  //遍历
+//    for (cNPCData* pNPC : m_vecNPC)
+//    {
+//        if (pNPC->iID == r)
+//        {
+//            return pNPC;
+//        }
+//    }
+//    return nullptr;
 //}

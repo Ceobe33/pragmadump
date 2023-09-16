@@ -112,7 +112,7 @@ void cDirector::solveFrameProblem() {
     //GetConsoleScreenBufferInfo(hndl, &csbi);
     //DWORD written;
     //DWORD N = csbi.dwSize.X * csbi.dwCursorPosition.Y +
-    //	csbi.dwCursorPosition.X + 1;
+    //    csbi.dwCursorPosition.X + 1;
     //COORD curhome = { 0,0 };
 
     //FillConsoleOutputCharacter(hndl, ' ', N, curhome, &written);

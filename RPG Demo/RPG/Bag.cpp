@@ -29,11 +29,11 @@ void cBag::update() {
                 pSceneMain->getPlayer()->bonus("in", pData);
                 //if (pData->strTag == "arms")
                 //{
-                //	pSceneMain->getPlayer()->getEquipment()->addEquipment(pData);
+                //    pSceneMain->getPlayer()->getEquipment()->addEquipment(pData);
                 //}
                 //else if (pData->strTag == "edible")
                 //{
-                //	pSceneMain->getPlayer()->useItem(pData);
+                //    pSceneMain->getPlayer()->useItem(pData);
                 //}
                 //装备加成
                 //pSceneMain->getPlayer()->bonus("in",pData);
@@ -56,7 +56,7 @@ void cBag::render() {
     //玩家属性显示
     pSceneMain->getPlayer()->propertyRender();
     //背包物品显示
-    cout << endl << endl << "		It is " << pSceneMain->getPlayer()->getName() << "'s bag."
+    cout << endl << endl << "        It is " << pSceneMain->getPlayer()->getName() << "'s bag."
         << endl << "\tName\t\t" << "Atk\t" << "Heal\t" << "Count\t" << "Price\t" << "Details\t" << endl;
     for (int i = 0; i < int(m_vecBag.size()); i++) {
         if (i == bagArrowState)
@@ -74,7 +74,7 @@ void cBag::render() {
 
     }
     //装备物品显示
-    cout << endl << endl << "		It is " << m_strName << "'s equipment."
+    cout << endl << endl << "        It is " << m_strName << "'s equipment."
         << endl << "\tName\t\t" << "Atk\t" << "Count\t" << "Price\t" << "Details\t" << endl;
     int equipmentContainerSize = int(pSceneMain->getPlayer()->getEquipment()->getVecEquipment().size());
     for (int i = 0; i < equipmentContainerSize; i++) {
@@ -122,15 +122,15 @@ void cBag::addGoods(cGoodsData* goods) {
 //
 //void cBag::unload(cGoodsData* pData)
 //{
-//	pData->iBagCount++;
-//	for (cGoodsData* pData : m_vecBag)
-//	{
-//		if (pData->iAmount > 0)
-//		{
-//			return;
-//		}
-//	}
-//	m_vecBag.push_back(pData);
+//    pData->iBagCount++;
+//    for (cGoodsData* pData : m_vecBag)
+//    {
+//        if (pData->iAmount > 0)
+//        {
+//            return;
+//        }
+//    }
+//    m_vecBag.push_back(pData);
 //}
 
 vector<cGoodsData*> cBag::getVecBag() {

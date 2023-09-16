@@ -5,19 +5,19 @@
 class cEquipment:public cSceneBase
 {
 public:
-	cEquipment();
-	void update();
-	void render();
+    cEquipment();
+    void update();
+    void render();
 
-	//interface
-	//GET_PRIVATE(cGoodsData*,VecEquipment , m_vecEquipment);
+    //interface
+    //GET_PRIVATE(cGoodsData*,VecEquipment , m_vecEquipment);
 
-	vector<cGoodsData*> getVecEquipment();
-	void addEquipment(cGoodsData* pData);
+    vector<cGoodsData*> getVecEquipment();
+    void addEquipment(cGoodsData* pData);
 
 private:
-	vector<cGoodsData*> m_vecEquipment;
-	int arrowState;
+    vector<cGoodsData*> m_vecEquipment;
+    int arrowState;
 };
 
 #endif // !RPG_RPG_EQUIPMENT_H_

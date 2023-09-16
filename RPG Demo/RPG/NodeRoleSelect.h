@@ -6,13 +6,13 @@
 
 class cNodeRoleSelect :public cNode {
 public:
-	cNodeRoleSelect();
-	~cNodeRoleSelect();
-	void update();
-	void render();
-	int roleselArrowState{};
-	//vector<cRoleSelectData*> getVecPlayer();
-	GET_PRIVATE(vector<cRoleSelectData*>, VecPlayer, roleContainer);
+    cNodeRoleSelect();
+    ~cNodeRoleSelect();
+    void update();
+    void render();
+    int roleselArrowState{};
+    //vector<cRoleSelectData*> getVecPlayer();
+    GET_PRIVATE(vector<cRoleSelectData*>, VecPlayer, roleContainer);
 };
 
 #endif // !RPG_RPG_NODEROLESELECT_H_

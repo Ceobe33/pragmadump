@@ -39,23 +39,23 @@ cMap* cMap::getInstance() {
 
 //void cMap::initialize(MapData* data)
 //{
-//	m_iID = data->iID;
-//	m_iRow = data->m_iRow;
-//	m_iCol = data->m_iCol;
-//	m_iPlayerRow = data->m_iPlayerRow;
-//	m_iPlayerRow = data->m_iPlayerCol;
+//    m_iID = data->iID;
+//    m_iRow = data->m_iRow;
+//    m_iCol = data->m_iCol;
+//    m_iPlayerRow = data->m_iPlayerRow;
+//    m_iPlayerRow = data->m_iPlayerCol;
 //}
 
 //cMapRuler::cMapRuler()
 //{
-//	vector<DataBase*> vec = cDataRuler::getInstance()->getDataRuler("MapDataRuler")->getDataVector();
-//	for (DataBase* mapData : vec)
-//	{
-//		cMap* map = new cMap();
-//		MapData* pData = static_cast<MapData*>(mapData);
-//		map->initialize(pData);
-//		m_vecMap.push_back(map);
-//	}
+//    vector<DataBase*> vec = cDataRuler::getInstance()->getDataRuler("MapDataRuler")->getDataVector();
+//    for (DataBase* mapData : vec)
+//    {
+//        cMap* map = new cMap();
+//        MapData* pData = static_cast<MapData*>(mapData);
+//        map->initialize(pData);
+//        m_vecMap.push_back(map);
+//    }
 //}
 //
 //cMapRuler::~cMapRuler()

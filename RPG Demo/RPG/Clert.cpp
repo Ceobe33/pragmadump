@@ -21,12 +21,12 @@ void cClert::update() {
 }
 
 void cClert::render() {
-    cout << endl << endl << "				do you wanna go RoleSelect scene?"
-        << endl << "				press RETURN to confirm, Esc to cancel.";
+    cout << endl << endl << "                do you wanna go RoleSelect scene?"
+        << endl << "                press RETURN to confirm, Esc to cancel.";
 }
 
 void cClert::buyingPower() {
-    cout << endl << endl << "				you have no authority to buy this" << endl;
+    cout << endl << endl << "                you have no authority to buy this" << endl;
 }
 
 cClert* cClert::getInstance() {

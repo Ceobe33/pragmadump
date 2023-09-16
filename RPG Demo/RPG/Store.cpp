@@ -17,11 +17,11 @@ cStore::~cStore() {
 
 //void cStore::getInstance()
 //{
-//	if (!m_pInstance)
-//	{
-//		m_pInstance = new cStore();
-//	}
-//	m_pInstance = nullptr;
+//    if (!m_pInstance)
+//    {
+//        m_pInstance = new cStore();
+//    }
+//    m_pInstance = nullptr;
 //}
 
 void cStore::update() {
@@ -76,7 +76,7 @@ void cStore::render() {
 
     }
     //Íæ¼Ò±³°üäÖÈ¾
-    cout << endl << endl << "		It is " << pSceneMain->getPlayer()->getName() << "'s bag."
+    cout << endl << endl << "        It is " << pSceneMain->getPlayer()->getName() << "'s bag."
         << endl << "\tName\t\t" << "Atk\t" << "Count\t" << "Price\t" << "Details\t" << endl;
 
     auto bagVector = pSceneMain->getPlayer()->getBag()->getVecBag();
@@ -129,14 +129,14 @@ cGoodsData* cStore::armament(const int& i) {
 
 //void cStore::sellGoods()
 //{
-//	for (cGoodsData* pData : m_vecGoods)
-//	{
-//		if (pData->iID == arrowState+300)
-//		{
-//			if (0 >= pData->iAmount)
-//				return;
-//			pData->iAmount--;
-//			m_pPlayer->buyGoods(pData);
-//		}
-//	}
+//    for (cGoodsData* pData : m_vecGoods)
+//    {
+//        if (pData->iID == arrowState+300)
+//        {
+//            if (0 >= pData->iAmount)
+//                return;
+//            pData->iAmount--;
+//            m_pPlayer->buyGoods(pData);
+//        }
+//    }
 //}

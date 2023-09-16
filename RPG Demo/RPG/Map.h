@@ -4,34 +4,34 @@
 
 class cMap {
 public:
-	~cMap();
-	//void initialize(MapData* data);
+    ~cMap();
+    //void initialize(MapData* data);
 
-	MapData* getMapByID(const int &mapID);
-	static cMap* getInstance();
-	//interface
-	//CC_GETPRIVATE(int, ID, m_iID);
-	GET_PRIVATE(vector<MapData*>, VecMap, m_vecMap);
+    MapData* getMapByID(const int &mapID);
+    static cMap* getInstance();
+    //interface
+    //CC_GETPRIVATE(int, ID, m_iID);
+    GET_PRIVATE(vector<MapData*>, VecMap, m_vecMap);
 
 private:
-	cMap();
-	static cMap* m_pInstanceMap;
-	//int m_iID, m_iRow, m_iCol, m_iPlayerRow, m_iPlayerCol;
+    cMap();
+    static cMap* m_pInstanceMap;
+    //int m_iID, m_iRow, m_iCol, m_iPlayerRow, m_iPlayerCol;
 
-	//vector<MapData*> m_vecMap;
+    //vector<MapData*> m_vecMap;
 
 };
 
 //class cMapRuler
 //{
 //public:
-//	cMapRuler();
-//	~cMapRuler();
+//    cMapRuler();
+//    ~cMapRuler();
 //
-//	void getMapByID(const int &mapID);
+//    void getMapByID(const int &mapID);
 //
-//	//interface
-//	CC_GETPRIVATE(vector<cMap*>, VecMap, m_vecMap);
+//    //interface
+//    CC_GETPRIVATE(vector<cMap*>, VecMap, m_vecMap);
 //private:
 //};
 

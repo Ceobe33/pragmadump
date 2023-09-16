@@ -40,17 +40,17 @@ using namespace sf;
 
 // ##是粘合符
 #define GET_SET_PRIVATE(dataType, functionName, valueName) \
-	dataType get##functionName(){ return valueName; }\
-	void set##functionName(dataType value){ valueName = value; } \
-	private:\
-	dataType valueName; \
-	public:
+    dataType get##functionName(){ return valueName; }\
+    void set##functionName(dataType value){ valueName = value; } \
+    private:\
+    dataType valueName; \
+    public:
 
 #define GET_PRIVATE(dataType, functionName, valueName) \
-	dataType get##functionName(){ return valueName; } \
-	private:\
-	dataType valueName; \
-	public:
+    dataType get##functionName(){ return valueName; } \
+    private:\
+    dataType valueName; \
+    public:
 
 // 得到游戏场景的指针
 // 这两种分别在什么场景下使用，作用是什么
@@ -58,21 +58,21 @@ using namespace sf;
 #define GET_pSCENEMAIN cSceneMain* pSceneMain = static_cast<cSceneMain*>(cDirector::getInstance()->getScene("Game"))
 
 enum {
-	eAir,
-	eWall,
-	ENUM,
-	eMoveBufferVal = 5,
-	eNPCCoach = 405,
-	eMapBattle = 203,
+    eAir,
+    eWall,
+    ENUM,
+    eMoveBufferVal = 5,
+    eNPCCoach = 405,
+    eMapBattle = 203,
 
-	eNone = 0,
-	ePlayer,
-	eEnemy, 
-	//eDirection,
-	eUp,
-	eDown,
-	eLeft,
-	eRight
+    eNone = 0,
+    ePlayer,
+    eEnemy, 
+    //eDirection,
+    eUp,
+    eDown,
+    eLeft,
+    eRight
 };
 
 // #include "Ruler.h"

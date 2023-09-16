@@ -41,7 +41,7 @@ void cLoading::render() {
     }
     system("cls");
     cDirector::getInstance()->popScene();
-    //	cDirector::getInstance()->popScene();
+    //    cDirector::getInstance()->popScene();
 
         /*cSceneMain* pSceneMain = static_cast<cSceneMain*>(cDirector::getInstance()->getScene());
         pSceneMain->setCurentMap(cMap::getInstance()->getMapByID(nextMapId));

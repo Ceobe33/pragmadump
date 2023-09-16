@@ -4,16 +4,16 @@
 
 class cMenu :public cSceneBase {
 public:
-	cMenu();
-	void update();
-	void render();
-	//static cMenu* getInstance();
-	GET_SET_PRIVATE(int, State, arrowState);
+    cMenu();
+    void update();
+    void render();
+    //static cMenu* getInstance();
+    GET_SET_PRIVATE(int, State, arrowState);
 private:
-	//static cMenu* m_pInstanceMenu;
-	//int arrowState;
- //   CircleShape shape;
-	//RenderWindow window;
+    //static cMenu* m_pInstanceMenu;
+    //int arrowState;
+    sf::CircleShape shape;
+    //RenderWindow window;
 };
 
 #endif // !RPG_RPG_MENU_H_

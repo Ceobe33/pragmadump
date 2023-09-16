@@ -10,25 +10,25 @@ void cEnemy::update() {
     //GET_pSCENEMAIN;
     //for (cEnemyData* pData : m_vecEnemy)
     //{
-    //	int playerRow = pCurentScene->getPlayer()->getRow();
-    //	int playerCol = pCurentScene->getPlayer()->getCol();
-    //	if (
-    //		pData->iRow - 1 == playerRow && pData->iCol - 1 == playerCol ||
-    //		pData->iRow - 1 == playerRow && pData->iCol + 1 == playerCol ||
-    //		pData->iRow - 1 == playerRow && pData->iCol == playerCol ||
-    //		pData->iRow + 1 == playerRow && pData->iCol - 1 == playerCol ||
-    //		pData->iRow + 1 == playerRow && pData->iCol + 1 == playerCol ||
-    //		pData->iRow + 1 == playerRow && pData->iCol == playerCol ||
-    //		pData->iRow == playerRow && pData->iCol - 1 == playerCol ||
-    //		pData->iRow == playerRow && pData->iCol + 1 == playerCol ||
-    //		pData->iRow == playerRow && pData->iCol == playerCol)
-    //	{
+    //    int playerRow = pCurentScene->getPlayer()->getRow();
+    //    int playerCol = pCurentScene->getPlayer()->getCol();
+    //    if (
+    //        pData->iRow - 1 == playerRow && pData->iCol - 1 == playerCol ||
+    //        pData->iRow - 1 == playerRow && pData->iCol + 1 == playerCol ||
+    //        pData->iRow - 1 == playerRow && pData->iCol == playerCol ||
+    //        pData->iRow + 1 == playerRow && pData->iCol - 1 == playerCol ||
+    //        pData->iRow + 1 == playerRow && pData->iCol + 1 == playerCol ||
+    //        pData->iRow + 1 == playerRow && pData->iCol == playerCol ||
+    //        pData->iRow == playerRow && pData->iCol - 1 == playerCol ||
+    //        pData->iRow == playerRow && pData->iCol + 1 == playerCol ||
+    //        pData->iRow == playerRow && pData->iCol == playerCol)
+    //    {
 
-    //	}
-    //	if (pData->iRow == playerRow && pData->iCol == playerCol)
-    //	{
-    //		delete pData;
-    //	}
+    //    }
+    //    if (pData->iRow == playerRow && pData->iCol == playerCol)
+    //    {
+    //        delete pData;
+    //    }
     //}
 
 }
