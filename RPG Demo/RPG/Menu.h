@@ -12,6 +12,8 @@ public:
 private:
 	//static cMenu* m_pInstanceMenu;
 	//int arrowState;
+ //   CircleShape shape;
+	//RenderWindow window;
 };
 
 #endif // !RPG_RPG_MENU_H_

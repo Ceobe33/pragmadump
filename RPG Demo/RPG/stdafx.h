@@ -28,8 +28,11 @@
 // 消息机制的头文件
 #include <functional>
 #include <assert.h>
+// for render img
+#include <SFML/Graphics.hpp>
 
 using namespace std;
+using namespace sf;
 
 #define KEY_DOWN(vk_code) ((GetAsyncKeyState(vk_code)&0x8000?1:0) /*&& m_iMoveCache % */)
 #define VK_B           0x42
