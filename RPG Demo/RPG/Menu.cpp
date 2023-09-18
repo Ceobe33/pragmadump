@@ -3,13 +3,13 @@
 #include "RoleSelect.h"
 
 cMenu::cMenu()
-    //: shape(100.f)
-    //  window(VideoMode(200, 200), "SFML works!")
+    : shape(100.f),
+      window(VideoMode(200, 200), "SFML works!")
 {
     m_strName = "Menu";
 
     //shape = CircleShape(100.f);
-    //shape.setFillColor(Color::Green);
+    //shape.setFillColor(sf::Color::Green);
 }
 
 void cMenu::update() {
@@ -20,9 +20,9 @@ void cMenu::update() {
 }
 void cMenu::render() {
     //Event event;
-    //window.clear();
-    //window.draw(shape);
-    //window.display();
+    window.clear();
+    window.draw(shape);
+    window.display();
     cout << "\n\n\t            this is Menu\n"
         << "\t        press enter to play";
 }
