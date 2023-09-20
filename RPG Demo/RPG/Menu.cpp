@@ -4,7 +4,7 @@
 
 cMenu::cMenu()
     : shape(100.f),
-      window(VideoMode(200, 200), "SFML works!")
+      window(VideoMode(100, 100), "SFML works!")
 {
     m_strName = "Menu";
 
