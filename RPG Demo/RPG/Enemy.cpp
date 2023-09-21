@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "Enemy.h"
 
-cEnemy::cEnemy() {
+cEnemy::cEnemy() 
+{
     death = false;
 }
 

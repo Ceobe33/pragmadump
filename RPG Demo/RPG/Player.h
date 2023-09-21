@@ -58,9 +58,9 @@ public:
     //GET_PRIVATE(int, BackupCol, m_iBackupCol);
     //bool getHurt();
     //bool getFire();
-    bool havePet;
-    int m_iPetRow, m_iPetCol, m_iPetRowBackup, m_iPetColBackup;
-    string m_strPetImg;
+    bool havePet{};
+    int m_iPetRow{}, m_iPetCol{}, m_iPetRowBackup{}, m_iPetColBackup{};
+    string m_strPetImg{};
 private:
     //定义玩家行、列，备份行、列
     //int m_iRow, m_iCol;
@@ -70,7 +70,7 @@ private:
     //int m_iBackupRow, m_iBackupCol;
     //cBag* m_pBag;
 
-    int m_iID, arrowState, m_iHPMax;
+    int m_iID{}, arrowState{}, m_iHPMax{};
     // player move cache, to prevent system to fluquent and player move too fast
 };
 

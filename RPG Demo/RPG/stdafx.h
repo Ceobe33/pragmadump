@@ -46,13 +46,13 @@ using namespace sf;
     dataType get##functionName(){ return valueName; }\
     void set##functionName(dataType value){ valueName = value; } \
     private:\
-    dataType valueName; \
+    dataType valueName{}; \
     public:
 
 #define GET_PRIVATE(dataType, functionName, valueName) \
     dataType get##functionName(){ return valueName; } \
     private:\
-    dataType valueName; \
+    dataType valueName{}; \
     public:
 
 // 得到游戏场景的指针

@@ -7,7 +7,7 @@ cEquipment::cEquipment()
 }
 
 void cEquipment::update() {
-    int equipmentContainerSize(m_vecEquipment.size());
+    size_t equipmentContainerSize(m_vecEquipment.size());
     //GET_pCURENTSCENE;
     GET_pSCENEMAIN;
     if (KEY_DOWN(VK_ESCAPE)) {

@@ -10,7 +10,7 @@ public:
     ~cNodeRoleSelect();
     void update();
     void render();
-    int roleselArrowState{};
+    size_t roleselArrowState{};
     //vector<cRoleSelectData*> getVecPlayer();
     GET_PRIVATE(vector<cRoleSelectData*>, VecPlayer, roleContainer);
 };

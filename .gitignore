@@ -2,6 +2,7 @@
 ExportedObj/
 .consulo/
 .vs/
+x64
 *.suo
 *.tmp
 # *.user
