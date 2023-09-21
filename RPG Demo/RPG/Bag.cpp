@@ -7,7 +7,7 @@ cBag::cBag()
 }
 
 void cBag::update() {
-    int bagSize = m_vecBag.size();
+    size_t bagSize = m_vecBag.size();
     if (KEY_DOWN(VK_ESCAPE)) {
         cDirector::getInstance()->popScene();
     } else if (KEY_DOWN(VK_DOWN)) {

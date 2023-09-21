@@ -75,7 +75,7 @@ void cEnemyRuler::render(cEnemy* enemy) {
     }
 }
 
-cEnemy* cEnemyRuler::render(const int& r, const int& c, const int& i) {
+cEnemy* cEnemyRuler::render(const size_t& r, const size_t& c, const size_t& i) {
     for (cEnemy* pData : m_vecEnemy) {
         if (pData->getRow() == r && pData->getCol() == c && pData->getCurentMapID() == i) {
             return pData;

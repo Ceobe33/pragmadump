@@ -60,6 +60,8 @@ using namespace sf;
 #define GET_pCURENTSCENE cSceneMain* pCurentScene = static_cast<cSceneMain*>(cDirector::getInstance()->getScene())
 #define GET_pSCENEMAIN cSceneMain* pSceneMain = static_cast<cSceneMain*>(cDirector::getInstance()->getScene("Game"))
 
+#define ONE size_t(1)
+
 enum {
     eAir,
     eWall,
@@ -75,7 +77,7 @@ enum {
     eUp,
     eDown,
     eLeft,
-    eRight
+    eRight,
 };
 
 // #include "Ruler.h"

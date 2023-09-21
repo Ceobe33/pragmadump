@@ -12,7 +12,7 @@ void cNPC::update() {
 }
 
 //
-//cNPC* cNPC::render(const int& r, const int& c, const int& i)
+//cNPC* cNPC::render(const size_t& r, const size_t& c, const size_t& i)
 //{
 //    GET_pCURENTSCENE;
 //    //将容器内每个元素依次赋值给 pNPC  //遍历
@@ -67,7 +67,7 @@ void cNPCRuler::storage() {
 
 }
 
-cNPC* cNPCRuler::render(const int& r, const int& c, const int& i) {
+cNPC* cNPCRuler::render(const size_t& r, const size_t& c, const size_t& i) {
     //将容器内每个元素依次赋值给 pNPC  //遍历
     for (cNPC* pNPC : m_vecNPC) {
         if (pNPC->getRow() == r && pNPC->getCol() == c && pNPC->getCurentMapID() == i) {

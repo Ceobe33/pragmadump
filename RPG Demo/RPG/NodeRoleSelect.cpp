@@ -25,8 +25,8 @@ void cNodeRoleSelect::update() {
 
     if (roleselArrowState < 0) {
         roleselArrowState = 0;
-    } else if (int(roleContainer.size()) - 1 < roleselArrowState) {
-        roleselArrowState = roleContainer.size() - 1;
+    } else if (int(roleContainer.size()) - ONE < roleselArrowState) {
+        roleselArrowState = roleContainer.size() - ONE;
     } else if (KEY_DOWN(VK_RETURN)) {
         //cDirector::getInstance()->pushScene(this);
         //cDirector::getInstance()->replaceScene(new cSceneMain());//setState(1);

@@ -29,7 +29,7 @@ public:
     void propertyRender();
     void petInit(cPetData* pData);
     // ½Ó¿Ú interface
-    bool scan(int r, int c);
+    bool scan(size_t r, size_t c);
 
 
     GET_PRIVATE(int, Row, m_iRow);

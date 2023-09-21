@@ -35,7 +35,7 @@ public:
     void render(cEnemy* enemy);
 
     cEnemy* getSingleEnemy(const int& enemyID);
-    cEnemy* render(const int& r, const int& c, const int& i);
+    cEnemy* render(const size_t& r, const size_t& c, const size_t& i);
     void storage();
     //bool scan(const int& r, const int& c, const int& i);
     cEnemy* killed();

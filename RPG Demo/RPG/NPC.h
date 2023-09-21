@@ -43,7 +43,7 @@ public:
 
     void storage();
     //bool scan(const int& r, const int& c, const int& i);
-    cNPC* render(const int& r, const int& c, const int& i);
+    cNPC* render(const size_t& r, const size_t& c, const size_t& i);
     //cNPC* dialogue(const int& r);
     cNPC* getNPCByID(const int& i);
 

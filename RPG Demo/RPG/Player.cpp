@@ -86,7 +86,7 @@ void cPlayer::setPosition(int r, int c) {
     m_iRow = r, m_iCol = c;
 }
 
-bool cPlayer::scan(int r, int c) {
+bool cPlayer::scan(size_t r, size_t c) {
     if (r == m_iRow && c == m_iCol)
         return true;
     return false;
