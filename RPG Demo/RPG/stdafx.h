@@ -31,6 +31,9 @@
 // for render img
 #include <SFML/Graphics.hpp>
 
+// solve `LNK2001	unresolved external symbol __imp__GetAsyncKeyState@
+#pragma comment(lib, "User32.lib")
+
 using namespace std;
 using namespace sf;
 
