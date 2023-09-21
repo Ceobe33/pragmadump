@@ -137,6 +137,7 @@ void cSceneMain::render() {
     //    selectedRole->render();
     for (size_t i = 0; i < m_pCurentMap->m_iRow; i++) {
         for (size_t j = 0; j < m_pCurentMap->m_iCol; j++) {
+            // for debug
             int iTag = 0;
             if (m_pNPCRuler->render(i, j, m_iMapID)/*m_pCurentMap->m_arrMap[i][j] >= 400 && m_pCurentMap->m_arrMap[i][j] < 500*/) {
                 //render函数 判断-返回 要打印的字符
