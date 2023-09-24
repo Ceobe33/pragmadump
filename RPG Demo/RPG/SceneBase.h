@@ -17,6 +17,7 @@ public:
 
 protected:
     string m_strName;
+    //static RenderWindow window{};
 };
 
 #endif // !RPG_RPG_SCENEBASE_H_

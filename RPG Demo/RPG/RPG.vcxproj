@@ -160,6 +160,7 @@
     <ClInclude Include="DataBase.h" />
     <ClInclude Include="DataRuler.h" />
     <ClInclude Include="DataStruct.h" />
+    <ClInclude Include="Debug.h" />
     <ClInclude Include="Director.h" />
     <ClInclude Include="Emitter.h" />
     <ClInclude Include="Enemy.h" />
@@ -188,6 +189,7 @@
     <ClCompile Include="DataBase.cpp" />
     <ClCompile Include="DataRuler.cpp" />
     <ClCompile Include="DataStruct.cpp" />
+    <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Director.cpp" />
     <ClCompile Include="Emitter.cpp" />
     <ClCompile Include="Enemy.cpp" />

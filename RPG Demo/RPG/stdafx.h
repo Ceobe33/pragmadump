@@ -85,8 +85,10 @@ enum {
 #include "Director.h"
 #include "SceneMain.h"
 #include "Emitter.h"
+#include "Debug.h"
 // extern cDataRuler* dataRuler;
 // extern cRuler* ruler;
+static Debug debug;
 // TODO:  在此处引用程序需要的其他头文件
 int iMoveCache = 0;
 

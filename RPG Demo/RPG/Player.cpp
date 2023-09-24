@@ -16,6 +16,14 @@ cPlayer::cPlayer() {
     havePet = false;
     m_iEXPMax = 600, m_iEXP = 0;
     cEmitter::getInstance()->registerNews("buyGoods", bind(&cPlayer::buyGoods, this, placeholders::_1));
+
+    if (!texPlayer.loadFromFile("resources/coebe/idle/coebe_summer_I_133_000.png")) {
+        cout << "warning: player coebe's sprite have not loaded.";
+    }
+    spPlayer = Sprite(texPlayer);
+    spPlayer.setScale(Vector2f(0.3f, 0.3f));
+    spPlayer.setOrigin(Vector2f(0.5f, 0.5f));
+    spPlayer.setPosition(100.f, 100.f);
 }
 
 //cPlayer::cPlayer(int r, int c)
@@ -66,6 +74,10 @@ void cPlayer::update() {
     //equipmentBonus();
 }
 
+Sprite cPlayer::render() {
+    return spPlayer;
+}
+
 void cPlayer::surroundPlayer(const int& i) {
     GET_pSCENEMAIN;
     if (i != pSceneMain->getCurentMap()->m_arrMap[m_iRow + 1][m_iCol]) {
@@ -84,6 +96,7 @@ void cPlayer::surroundPlayer(const int& i) {
 
 void cPlayer::setPosition(int r, int c) {
     m_iRow = r, m_iCol = c;
+    spPlayer.setPosition(c * 10.f, r * 10.f);
 }
 
 bool cPlayer::scan(size_t r, size_t c) {
@@ -228,7 +241,7 @@ void cPlayer::experience(const int& EXP) {
 // 打印经验条
 void cPlayer::experienceRender() {
     for (int i = 0; i < 36; i++) {
-        i < 36 * m_iEXP / m_iEXPMax ? cout << "■" : cout << "□";
+        i < 36 * m_iEXP / m_iEXPMax ? debug.print("田") : debug.print("口");
     }
     cout << endl;
 }

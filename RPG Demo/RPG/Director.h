@@ -3,8 +3,9 @@
 #define RPG_RPG_DIRECTOR_H_
 
 #include "SceneBase.h"
+#include "Node.h"
 
-class cDirector {
+class cDirector : cNode {
 public:
     ~cDirector();
 
@@ -24,7 +25,6 @@ public:
     // 获取指定名称的场景
     cSceneBase* getScene(string scene);
 
-
 private:
     cDirector();
     static cDirector* m_pInstance;
@@ -33,6 +33,7 @@ private:
     cSceneBase* m_pRunningScene;
 
     int m_iPressingBuffer;
+
 };
 
 #endif // !RPG_RPG_DIRECTOR_H_

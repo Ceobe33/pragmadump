@@ -15,6 +15,7 @@ public:
     void backup();
     void revoke();
     void bonus(string inOrOut, cGoodsData* pData);
+    Sprite render();
     void surroundPlayer(const int& i);
     void setPosition(int r, int c);
     // cPlayer* getDetail();
@@ -62,6 +63,9 @@ public:
     int m_iPetRow{}, m_iPetCol{}, m_iPetRowBackup{}, m_iPetColBackup{};
     string m_strPetImg{};
 private:
+    Texture texPlayer{};
+    Sprite spPlayer{};
+
     //定义玩家行、列，备份行、列
     //int m_iRow, m_iCol;
     //cPlayer* m_pInstancePlayer;

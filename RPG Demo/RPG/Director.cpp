@@ -4,7 +4,8 @@
 
 cDirector* cDirector::m_pInstance = nullptr;
 cDirector::cDirector()
-    :m_iPressingBuffer(0) {
+    :m_iPressingBuffer(0)
+{
     m_pRunningScene = nullptr;
 }
 
@@ -26,7 +27,15 @@ void cDirector::update() {
 }
 
 void cDirector::render() {
+    Event event;
+    if (window.pollEvent(event))
+    {
+        if (event.type == Event::Closed)
+            window.close();
+    }
+    window.clear();
     m_pRunningScene->render();
+    window.display();
 }
 
 //ÓÎÏ·ÔËÐÐ

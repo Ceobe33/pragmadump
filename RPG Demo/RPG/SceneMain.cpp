@@ -12,7 +12,10 @@ cSceneMain::cSceneMain()
     m_bSurroundNPC(false),
     m_bTrainning(false),
     m_bEnemyPropertyRender(false),
-    m_iMapID(200) {
+    m_iMapID(200),
+
+    shape(100.f)
+{
     m_strName = "Game";
     m_pPlayer = new cPlayer();
 
@@ -22,6 +25,7 @@ cSceneMain::cSceneMain()
     m_pStore = new cStore();
     m_pFireRuler = new cFireRuler();
 
+    shape.setFillColor(Color::Blue);
     // initialize with another way
     // pEnemyData = nullptr;
     // 玩家周围NPC的ID
@@ -133,6 +137,8 @@ bool cSceneMain::collide() {
 }
 
 void cSceneMain::render() {
+    //window.clear();
+    window.draw(m_pPlayer->render());
     //if (KEY_DOWN(VK_ESCAPE))
     //    selectedRole->render();
     for (size_t i = 0; i < m_pCurentMap->m_iRow; i++) {
@@ -174,7 +180,7 @@ void cSceneMain::render() {
                 cout << m_pEnemyRuler->render(i, j, m_iMapID)->getImg();
             } else if (eWall == m_pCurentMap->m_arrMap[i][j]) {
                 iTag = 3;
-                cout << "■";
+                cout << "田";
             } else if (m_pCurentMap->m_arrMap[i][j] >= 400 && m_pCurentMap->m_arrMap[i][j] < 500) {
                 iTag = 4;
                 cout << m_pNPCRuler->getNPCByID(m_pCurentMap->m_arrMap[i][j])->getOccupation().substr(0, 2);
@@ -201,7 +207,7 @@ void cSceneMain::render() {
                 //scan 函数判断该位置是否有NPC
             } else if (m_pCurentMap->m_arrMap[i][j] >= 200 && m_pCurentMap->m_arrMap[i][j] < 300/*100 <= m_pCurentMap->m_arrMap[i][j]*/) {
                 iTag = 8;
-                cout << "□";
+                cout << "门";
             } else if (eAir == m_pCurentMap->m_arrMap[i][j]) {
                 iTag = 9;
                 cout << "  ";

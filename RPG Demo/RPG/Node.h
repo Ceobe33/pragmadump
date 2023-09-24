@@ -20,11 +20,14 @@ public:
     static cNode* getInstance();
     string nodeName;
 
+    static RenderWindow window;
+
+
 protected:
     cNode();
     vector<cNode* > m_vecChildren;
-    cNode* m_pParent;
-    cNode* m_pShowNode;
+    cNode* m_pParent{};
+    cNode* m_pShowNode{};
     static cNode* m_pNodeInstance;
 };
 

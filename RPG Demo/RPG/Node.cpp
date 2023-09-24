@@ -2,6 +2,7 @@
 #include "Node.h"
 
 cNode* cNode::m_pNodeInstance = nullptr;
+RenderWindow cNode::window(VideoMode(1080, 720), "Arknights");
 cNode::cNode() {
 }
 
@@ -18,7 +19,7 @@ void cNode::render() {
 
 void cNode::addChild(cNode* pNode) {
     //安全检查
-    if (!pNode)    {
+    if (pNode != nullptr) {
         for (cNode* pChild : m_vecChildren) {
             //如果容器内有该孩子节点就结束函数
             if (pChild == pNode)
@@ -28,6 +29,9 @@ void cNode::addChild(cNode* pNode) {
         pNode->m_pParent = this;
         //将 pNode 存入容器
         m_vecChildren.push_back(pNode);
+    }
+    else {
+        debug.log("could not add child, because it's null");
     }
 }
 

@@ -44,6 +44,7 @@ private:
     bool m_bSurroundNPC;
     bool m_bTrainning, m_bEnemyPropertyRender;
     cEnemy* pEnemyData;
+    CircleShape shape;
     //cFire* fireIns;
     //int m_iSurroundPlayer;
 
