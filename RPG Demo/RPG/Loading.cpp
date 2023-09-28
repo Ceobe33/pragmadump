@@ -14,7 +14,6 @@ void cLoading::update() {
 }
 
 void cLoading::render() {
-    system("cls");
     cout << endl << endl << endl << endl << endl << endl << endl << endl
         << endl << endl << "                          Loading..." << endl
         << endl;
@@ -37,9 +36,8 @@ void cLoading::render() {
         }
 
         Sleep(a);
-        cout << "¡ö";
+        cout << "Ìï";
     }
-    system("cls");
     cDirector::getInstance()->popScene();
     //    cDirector::getInstance()->popScene();
 
