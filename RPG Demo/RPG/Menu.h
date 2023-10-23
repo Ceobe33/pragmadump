@@ -7,6 +7,7 @@ public:
     cMenu();
     void update();
     void render();
+    void cpptest();
     //static cMenu* getInstance();
     GET_SET_PRIVATE(int, State, arrowState);
 private:
