@@ -241,7 +241,7 @@ void cPlayer::experience(const int& EXP) {
 // 打印经验条
 void cPlayer::experienceRender() {
     for (int i = 0; i < 36; i++) {
-        i < 36 * m_iEXP / m_iEXPMax ? debug.print("田") : debug.print("口");
+        i < 36 * m_iEXP / m_iEXPMax ? debug.prints("田") : debug.prints("口");
     }
     cout << endl;
 }
