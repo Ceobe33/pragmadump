@@ -24,6 +24,8 @@ cPlayer::cPlayer() {
     spPlayer.setScale(Vector2f(0.3f, 0.3f));
     spPlayer.setOrigin(Vector2f(0.5f, 0.5f));
     spPlayer.setPosition(100.f, 100.f);
+    // link dll with window api
+    // HINSTANCE hDLL = LoadLibraryA("mydll.dll");
 }
 
 //cPlayer::cPlayer(int r, int c)
