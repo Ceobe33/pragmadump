@@ -3,6 +3,7 @@
 #include "RoleSelect.h"
 
 #include <array>
+#include "Tool.h"
 
 void cpptest4()
 {
@@ -126,4 +127,5 @@ void cMenu::render() {
     cout << "\n\n\t            this is Menu\n"
         << "\t        press enter to play";
     cpptest4();
+    debug.prints("\n", Tool::Q_rsqrt(4));
 }
