@@ -13,6 +13,20 @@
 
 //#include "NodeRoleSelect.h"
 
+class cWall
+{
+public:
+    cWall(){}
+    ~cWall(){}
+    Sprite* getSprite() {
+        return sp;
+    }
+
+private:
+    Sprite* sp{};
+    size_t row{}, col{};
+};
+
 class cSceneMain :public cSceneBase {
 public:
     cSceneMain();
@@ -45,6 +59,9 @@ private:
     bool m_bTrainning, m_bEnemyPropertyRender;
     cEnemy* pEnemyData;
     CircleShape shape;
+
+    Texture texWall{};
+    vector<cWall*> vecWall;
     //cFire* fireIns;
     //int m_iSurroundPlayer;
 

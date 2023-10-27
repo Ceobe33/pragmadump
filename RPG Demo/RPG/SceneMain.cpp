@@ -40,6 +40,10 @@ cSceneMain::cSceneMain()
     m_pCurentMap = cMap::getInstance()->getMapByID(m_iMapID);
     //初始化玩家位置
     m_pPlayer->setPosition(m_pCurentMap->m_iPlayerRow, m_pCurentMap->m_iPlayerCol);
+    
+    if (!texWall.loadFromFile("resources/scene/map_wall.png")) {
+        cout << "warning: player wall's sprite have not loaded.";
+    }
 }
 
 void cSceneMain::update() {
@@ -137,7 +141,6 @@ bool cSceneMain::collide() {
 }
 
 void cSceneMain::render() {
-    //window.clear();
     window.draw(m_pPlayer->render());
     //if (KEY_DOWN(VK_ESCAPE))
     //    selectedRole->render();
@@ -181,6 +184,12 @@ void cSceneMain::render() {
             } else if (eWall == m_pCurentMap->m_arrMap[i][j]) {
                 iTag = 3;
                 cout << "田";
+
+                // TODO: check and add new wall to render queue
+                //for (cWall* wall : vecWall) {
+                //    
+                //}
+                //vecWall.push_back()
             } else if (m_pCurentMap->m_arrMap[i][j] >= 400 && m_pCurentMap->m_arrMap[i][j] < 500) {
                 iTag = 4;
                 cout << m_pNPCRuler->getNPCByID(m_pCurentMap->m_arrMap[i][j])->getOccupation().substr(0, 2);
@@ -216,6 +225,12 @@ void cSceneMain::render() {
         }// in-loop end
         cout << endl;
     }// out-loop end
+    for (cWall* cell : vecWall)
+    {
+        if (cell != nullptr) {
+            window.draw(*(cell->getSprite()));
+        }
+    }
 
     // 玩家等级
     cout << endl << "\t\t\t  " << left << setw(2) << m_pPlayer->getLevel() << "(" << left << setw(3) << m_pPlayer->getEXP() << "/" << m_pPlayer->getEXPMax() << ")" << endl;
